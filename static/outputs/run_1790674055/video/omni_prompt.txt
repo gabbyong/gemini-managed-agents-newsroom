@@ -1,0 +1,11 @@
+Turn 1 (0-10s, with Infographic Reference <IMAGE_REF_0>):
+[# References <IMAGE_REF_0>@Image1]
+[00:00 - 00:05] Dynamic 3D camera pan over <IMAGE_REF_0> focusing on Scene 1, revealing floating kinetic text 'Godot C++ Integration' with glowing code nodes and blue HUD callouts.
+[00:05 - 00:10] Smooth camera orbit transition to Scene 2 section on <IMAGE_REF_0>, featuring a glowing phyllotaxis spiral LED display pulsing with audio waveform rings and kinetic graphics.
+
+Turn 2 (10-20s Extension):
+[00:10 - 00:15] Camera descends down <IMAGE_REF_0> into Scene 3 depth space, illuminating red warning rings and telemetry diagrams for 'Unchecked Critical Systems'.
+[00:15 - 00:20] Camera glides to Scene 4 on <IMAGE_REF_0>, revealing a golden 1993 uptime counter graphic with sleek animated timeline typography.
+
+Turn 3 (20-25s Extension):
+[00:20 - 00:25] Grand camera pull-back across the entire <IMAGE_REF_0> animated 3D infographic canvas, bringing all four illuminated story nodes into full balanced view with final brand sign-off overlays.

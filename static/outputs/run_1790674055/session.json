@@ -1,0 +1,350 @@
+{
+  "run_id": "run_1790674055",
+  "created_at": 1791960323,
+  "topic": "Top Hacker News",
+  "podcast_options": {
+    "style": "energetic",
+    "voice_alex": "Kore",
+    "voice_sam": "Puck"
+  },
+  "agents": {
+    "infographic": {
+      "role": "infographic",
+      "status": "Finished",
+      "interaction_id": null,
+      "environment_id": null,
+      "output_text": "",
+      "takeaways": "# Top 3 Hacker News Takeaways\n\n1. **Using any C++ library in Godot** \u2014 17 points and 3 comments\n   - Demonstrates techniques and workflows for integrating arbitrary C++ third-party libraries into the Godot game engine using package managers and custom bindings.\n\n2. **Phyllotaxis: An audio-reactive LED display** \u2014 137 points and 15 comments\n   - Showcases a custom hardware and visual installation that generates spiral botanical phyllotaxis patterns synchronized responsively to live audio.\n\n3. **The systems that no one will test** \u2014 51 points and 19 comments\n   - An engineering examination of critical infrastructure, legacy setups, and high-complexity systems that teams frequently avoid testing due to operational risks and technical hurdles.",
+      "storyboard": "",
+      "narration_script": "",
+      "omni_prompt": "",
+      "podcast_styles": {},
+      "transcript": "",
+      "files": [
+        {
+          "name": "infographic_style1_minimal.png",
+          "remote_path": "/workspace/output/infographic_style1_minimal.png",
+          "size_bytes": 480382,
+          "url": "/outputs/run_1790674055/infographic/infographic_style1_minimal.png?t=1790674146",
+          "style_id": "style1",
+          "style_label": "Style 1: Minimal / Monochrome / Line Art"
+        },
+        {
+          "name": "infographic_style2_space_retro.png",
+          "remote_path": "/workspace/output/infographic_style2_space_retro.png",
+          "size_bytes": 1253222,
+          "url": "/outputs/run_1790674055/infographic/infographic_style2_space_retro.png?t=1790674152",
+          "style_id": "style2",
+          "style_label": "Style 2: Space / Retro"
+        },
+        {
+          "name": "infographic_style3_pop_art.png",
+          "remote_path": "/workspace/output/infographic_style3_pop_art.png",
+          "size_bytes": 1335381,
+          "url": "/outputs/run_1790674055/infographic/infographic_style3_pop_art.png?t=1790674160",
+          "style_id": "style3",
+          "style_label": "Style 3: Pop Art / Dots / Comic"
+        },
+        {
+          "name": "infographic_style4_watercolor.png",
+          "remote_path": "/workspace/output/infographic_style4_watercolor.png",
+          "size_bytes": 974749,
+          "url": "/outputs/run_1790674055/infographic/infographic_style4_watercolor.png?t=1790674166",
+          "style_id": "style4",
+          "style_label": "Style 4: Sketch / Watercolor / Travel"
+        },
+        {
+          "name": "stories.json",
+          "remote_path": "/workspace/output/stories.json",
+          "size_bytes": 1621,
+          "url": "/outputs/run_1790674055/infographic/stories.json?t=1790674172"
+        },
+        {
+          "name": "takeaways.md",
+          "remote_path": "/workspace/output/takeaways.md",
+          "size_bytes": 756,
+          "url": "/outputs/run_1790674055/infographic/takeaways.md?t=1790674179"
+        }
+      ],
+      "logs": "Restored saved outputs from run_1790674055/infographic."
+    },
+    "video": {
+      "role": "video",
+      "status": "Finished",
+      "interaction_id": null,
+      "environment_id": null,
+      "output_text": "",
+      "takeaways": "",
+      "storyboard": "# Top Hacker News Stories \u2014 25s Infographic-Referenced Video Storyboard\n\nAnimated with **Gemini Omni 1.1 Flash (`gemini-omni-1.1-flash`)** using the session's infographic (`<IMAGE_REF_0>`) as the visual reference image, scene-aligned **Gemini 3.8 Flash TTS (`gemini-3.8-flash-tts`)** narration, and subtle **Lyria 3.5 (`lyria-3.5`)** chill house elevator background music.\n\n## \ud83c\udf99\ufe0f Scene-Aligned Spoken Narration Script (`gemini-3.8-flash-tts`)\n> **[00:00 - 00:06]** Easily integrate native C++ libraries directly into Godot engine projects for high performance.\n> **[00:06 - 00:12]** Watch stunning phyllotaxis LED patterns react dynamically to live audio frequency spectrums.\n> **[00:12 - 00:19]** Discover why crucial legacy software systems remain completely untested despite carrying immense risk.\n> **[00:19 - 00:25]** A legendary server running since 1993 faces decommissioning, ending twenty-four years of continuous uptime.\n\n## \ud83c\udfb5 Background Music (`lyria-3.5`)\n> Subtle instrumental chill house elevator-style groove (warm Rhodes chords, soft sub bassline, brushed hi-hats @ 112 BPM)\n\n## \ud83c\udfac Gemini Omni 1.1 Flash Prompt (with Infographic `<IMAGE_REF_0>` Reference)\n```text\nTurn 1 (0-10s, with Infographic Reference <IMAGE_REF_0>):\n[# References <IMAGE_REF_0>@Image1]\n[00:00 - 00:05] Dynamic 3D camera pan over <IMAGE_REF_0> focusing on Scene 1, revealing floating kinetic text 'Godot C++ Integration' with glowing code nodes and blue HUD callouts.\n[00:05 - 00:10] Smooth camera orbit transition to Scene 2 section on <IMAGE_REF_0>, featuring a glowing phyllotaxis spiral LED display pulsing with audio waveform rings and kinetic graphics.\n\nTurn 2 (10-20s Extension):\n[00:10 - 00:15] Camera descends down <IMAGE_REF_0> into Scene 3 depth space, illuminating red warning rings and telemetry diagrams for 'Unchecked Critical Systems'.\n[00:15 - 00:20] Camera glides to Scene 4 on <IMAGE_REF_0>, revealing a golden 1993 uptime counter graphic with sleek animated timeline typography.\n\nTurn 3 (20-25s Extension):\n[00:20 - 00:25] Grand camera pull-back across the entire <IMAGE_REF_0> animated 3D infographic canvas, bringing all four illuminated story nodes into full balanced view with final brand sign-off overlays.\n```\n\n## \ud83d\udccc Top Stories \u2014 Scene Timeline & 1-Liner Concise Summaries\n\n1. **Using any C++ library in Godot** (\u25b2 17 pts \u00b7 3 comments \u00b7 `00:00 - 00:06`)\n   - *1-Liner Takeaway:* Seamlessly embed any native C++ library into your Godot project workflows.\n   - *Aligned Voiceover:* \"Easily integrate native C++ libraries directly into Godot engine projects for high performance.\"\n\n2. **Phyllotaxis: An audio-reactive LED display** (\u25b2 137 pts \u00b7 15 comments \u00b7 `00:06 - 00:12`)\n   - *1-Liner Takeaway:* Mesmerizing phyllotaxis LED matrix reacts dynamically to real-time audio frequencies.\n   - *Aligned Voiceover:* \"Watch stunning phyllotaxis LED patterns react dynamically to live audio frequency spectrums.\"\n\n3. **The systems that no one will test** (\u25b2 51 pts \u00b7 19 comments \u00b7 `00:12 - 00:19`)\n   - *1-Liner Takeaway:* Unpacking the hidden architectural risks of legacy mission-critical code nobody tests.\n   - *Aligned Voiceover:* \"Discover why crucial legacy software systems remain completely untested despite carrying immense risk.\"\n\n4. **Booted up in 1993, this server still runs \u2013 but not for much longer (2017)** (\u25b2 38 pts \u00b7 8 comments \u00b7 `00:19 - 00:25`)\n   - *1-Liner Takeaway:* A legendary server running continuously since 1993 prepares for its final decommissioning.\n   - *Aligned Voiceover:* \"A legendary server running since 1993 faces decommissioning, ending twenty-four years of continuous uptime.\"",
+      "narration_script": "[00:00 - 00:06] Easily integrate native C++ libraries directly into Godot engine projects for high performance.\n[00:06 - 00:12] Watch stunning phyllotaxis LED patterns react dynamically to live audio frequency spectrums.\n[00:12 - 00:19] Discover why crucial legacy software systems remain completely untested despite carrying immense risk.\n[00:19 - 00:25] A legendary server running since 1993 faces decommissioning, ending twenty-four years of continuous uptime.",
+      "omni_prompt": "Turn 1 (0-10s, with Infographic Reference <IMAGE_REF_0>):\n[# References <IMAGE_REF_0>@Image1]\n[00:00 - 00:05] Dynamic 3D camera pan over <IMAGE_REF_0> focusing on Scene 1, revealing floating kinetic text 'Godot C++ Integration' with glowing code nodes and blue HUD callouts.\n[00:05 - 00:10] Smooth camera orbit transition to Scene 2 section on <IMAGE_REF_0>, featuring a glowing phyllotaxis spiral LED display pulsing with audio waveform rings and kinetic graphics.\n\nTurn 2 (10-20s Extension):\n[00:10 - 00:15] Camera descends down <IMAGE_REF_0> into Scene 3 depth space, illuminating red warning rings and telemetry diagrams for 'Unchecked Critical Systems'.\n[00:15 - 00:20] Camera glides to Scene 4 on <IMAGE_REF_0>, revealing a golden 1993 uptime counter graphic with sleek animated timeline typography.\n\nTurn 3 (20-25s Extension):\n[00:20 - 00:25] Grand camera pull-back across the entire <IMAGE_REF_0> animated 3D infographic canvas, bringing all four illuminated story nodes into full balanced view with final brand sign-off overlays.",
+      "podcast_styles": {},
+      "transcript": "",
+      "files": [
+        {
+          "name": "chill_house_bgm.mp3",
+          "remote_path": "/workspace/output/chill_house_bgm.mp3",
+          "size_bytes": 1459995,
+          "url": "/outputs/run_1790674055/video/chill_house_bgm.mp3?t=1791960138"
+        },
+        {
+          "name": "narration.wav",
+          "remote_path": "/workspace/output/narration.wav",
+          "size_bytes": 1200044,
+          "url": "/outputs/run_1790674055/video/narration.wav?t=1791960199"
+        },
+        {
+          "name": "narration_script.md",
+          "remote_path": "/workspace/output/narration_script.md",
+          "size_bytes": 463,
+          "url": "/outputs/run_1790674055/video/narration_script.md?t=1791960158"
+        },
+        {
+          "name": "news_video.mp4",
+          "remote_path": "/workspace/output/news_video.mp4",
+          "size_bytes": 12251713,
+          "url": "/outputs/run_1790674055/video/news_video.mp4?t=1791960323"
+        },
+        {
+          "name": "omni_prompt.txt",
+          "remote_path": "/workspace/output/omni_prompt.txt",
+          "size_bytes": 1038,
+          "url": "/outputs/run_1790674055/video/omni_prompt.txt?t=1791960158"
+        },
+        {
+          "name": "reference_infographic.png",
+          "remote_path": "/workspace/output/reference_infographic.png",
+          "size_bytes": 1253222,
+          "url": "/outputs/run_1790674055/video/reference_infographic.png?t=1791960138"
+        },
+        {
+          "name": "stories.json",
+          "remote_path": "/workspace/output/stories.json",
+          "size_bytes": 1621,
+          "url": "/outputs/run_1790674055/video/stories.json?t=1790674171"
+        },
+        {
+          "name": "storyboard.md",
+          "remote_path": "/workspace/output/storyboard.md",
+          "size_bytes": 3658,
+          "url": "/outputs/run_1790674055/video/storyboard.md?t=1791960158"
+        }
+      ],
+      "logs": "Restored saved outputs from run_1790674055/video."
+    },
+    "podcast": {
+      "role": "podcast",
+      "status": "Finished",
+      "interaction_id": null,
+      "environment_id": null,
+      "output_text": "",
+      "takeaways": "",
+      "storyboard": "",
+      "narration_script": "",
+      "omni_prompt": "",
+      "podcast_styles": {
+        "energetic": {
+          "id": "energetic",
+          "label": "Energetic morning show",
+          "voices": "Alex (Kore) & Sam (Puck)",
+          "wav_file": {
+            "name": "podcast_energetic.wav",
+            "style_id": "energetic",
+            "style_label": "Energetic morning show",
+            "remote_path": "/workspace/output/podcast_energetic.wav",
+            "size_bytes": 3264044,
+            "url": "/outputs/run_1790674055/podcast/podcast_energetic.wav?t=1792600009"
+          },
+          "script_file": {
+            "name": "transcript_energetic.md",
+            "style_id": "energetic",
+            "style_label": "Energetic morning show",
+            "remote_path": "/workspace/output/transcript_energetic.md",
+            "size_bytes": 1043,
+            "url": "/outputs/run_1790674055/podcast/transcript_energetic.md?t=1792600009"
+          },
+          "transcript": "Alex: Pour that third espresso straight into my veins, Sam, because Amazon is apparently hiking prices across the entire web while someone is out here slipping backdoors into Ledger crypto wallets!\nSam: Hide your cash and lock down your keys, Alex, because the only thing moving faster than retail inflation is autonomous AI agents rewriting the entire Rust ecosystem before breakfast!\nAlex: And while the bots conquer memory safety, the Smalltalk diehards are staging a massive comeback with the new Pulsar IDE, proving true vintage paradigms never die!\nSam: You know you are coding in absolute luxury when you render that glorious Smalltalk syntax in Iosevka, the ultra-customizable monospace font lighting up everybody's terminal today!\nAlex: Gorgeous slab-serif typography, rogue wallet firmware, and AI agents on the loose, folks, we are sprinting full-throttle through the tech matrix this morning!\nSam: Grab that coffee refill, keep your cold storage closer than your shopping cart, and stay tuned because we are just getting warmed up!"
+        },
+        "bedtime": {
+          "id": "bedtime",
+          "label": "Bedtime story",
+          "voices": "Alex (Sulafat) & Sam (Enceladus)",
+          "wav_file": {
+            "name": "podcast_bedtime.wav",
+            "style_id": "bedtime",
+            "style_label": "Bedtime story",
+            "remote_path": "/workspace/output/podcast_bedtime.wav",
+            "size_bytes": 2582754,
+            "url": "/outputs/run_1790674055/podcast/podcast_bedtime.wav?t=1792600009"
+          },
+          "script_file": {
+            "name": "transcript_bedtime.md",
+            "style_id": "bedtime",
+            "style_label": "Bedtime story",
+            "remote_path": "/workspace/output/transcript_bedtime.md",
+            "size_bytes": 784,
+            "url": "/outputs/run_1790674055/podcast/transcript_bedtime.md?t=1792600009"
+          },
+          "transcript": "Alex: Let your eyes soften now, watching the clean, slender lines of Iosevka drift peacefully into the quiet dark of your editor.\nSam: Let the restless markets fade away, along with the noisy algorithms nudging prices higher across the web, because none of that can reach you here.\nAlex: Even the anxious whispers of backdoors in hardware wallets can be set aside for the night, safe and locked away from your thoughts.\nSam: Far away, Pulsar is quietly dreaming up a gentle new Smalltalk workspace, serene and unhurried like an old memory.\nAlex: The autonomous agents and Rust compilers have finished verifying every boundary, letting their tired threads finally join in silence.\nSam: Breathe out the day's telemetry, let every safe reference release its hold, and drift off to sleep."
+        },
+        "skeptical": {
+          "id": "skeptical",
+          "label": "Skeptical engineers",
+          "voices": "Alex (Fenrir) & Sam (Zephyr)",
+          "wav_file": {
+            "name": "podcast_skeptical.wav",
+            "style_id": "skeptical",
+            "style_label": "Skeptical engineers",
+            "remote_path": "/workspace/output/podcast_skeptical.wav",
+            "size_bytes": 3056994,
+            "url": "/outputs/run_1790674055/podcast/podcast_skeptical.wav?t=1792600009"
+          },
+          "script_file": {
+            "name": "transcript_skeptical.md",
+            "style_id": "skeptical",
+            "style_label": "Skeptical engineers",
+            "remote_path": "/workspace/output/transcript_skeptical.md",
+            "size_bytes": 1058,
+            "url": "/outputs/run_1790674055/podcast/transcript_skeptical.md?t=1792600009"
+          },
+          "transcript": "Alex: Product wants us to rewrite our AI agents in Rust for memory safety, because apparently hallucinating invalid JSON at sub-millisecond latency is our new competitive moat.\nSam: The benchmarks look brilliant right up until nondeterministic token streaming hits the borrow checker, but at least our compute bills will finally outpace Amazon's algorithmic price hikes.\nAlex: Meanwhile, half the platform team spent their sprint configuring custom Iosevka font ligatures so those catastrophic concurrency panics look tastefully monospace.\nSam: That is still more productive than the crypto team inspecting Ledger hardware with an oscilloscope trying to verify if their supply chain backdoors are ISO-compliant.\nAlex: At this rate, someone will unironically pitch migrating our entire distributed state to a 2026 Smalltalk image just to remember what predictable runtime reflection felt like.\nSam: Don't tempt them; a thirty-year-old Smalltalk image in a single container would still beat our five-million-dollar microservice mesh on both latency and uptime."
+        }
+      },
+      "transcript": "Alex: Someone managed to link arbitrary C++ libraries into Godot, because game developers clearly lacked enough CMake linker headaches.\nSam: Brilliant, now instead of shipping gameplay mechanics, teams can spend full sprints troubleshooting cross-platform Conan dependency graphs.\nAlex: Next up is an audio-reactive LED display using phyllotaxis mathematics, proving once again that engineers will over-engineer ambient lighting before fixing their unit tests.\nSam: It looks stunning in a curated demo video, right until a voltage spike fries the microcontrollers and turns the room into an unscheduled strobe party.\nAlex: Finally, we have an essay on the systems that no one will test, which feels uncomfortably close to an architectural audit of our core infrastructure.\nSam: Testing distributed systems in staging is an expensive illusion anyway, so we might as well let our paying customers do the chaos engineering for us.",
+      "files": [
+        {
+          "name": "podcast.wav",
+          "remote_path": "/workspace/output/podcast.wav",
+          "size_bytes": 2855084,
+          "url": "/outputs/run_1790674055/podcast/podcast.wav?t=1790674265"
+        },
+        {
+          "name": "podcast_bedtime.wav",
+          "remote_path": "/workspace/output/podcast_bedtime.wav",
+          "size_bytes": 2582754,
+          "url": "/outputs/run_1790674055/podcast/podcast_bedtime.wav?t=1792600009"
+        },
+        {
+          "name": "podcast_energetic.wav",
+          "remote_path": "/workspace/output/podcast_energetic.wav",
+          "size_bytes": 3264044,
+          "url": "/outputs/run_1790674055/podcast/podcast_energetic.wav?t=1792600009"
+        },
+        {
+          "name": "podcast_skeptical.wav",
+          "remote_path": "/workspace/output/podcast_skeptical.wav",
+          "size_bytes": 3056994,
+          "url": "/outputs/run_1790674055/podcast/podcast_skeptical.wav?t=1792600009"
+        },
+        {
+          "name": "stories.json",
+          "remote_path": "/workspace/output/stories.json",
+          "size_bytes": 1621,
+          "url": "/outputs/run_1790674055/podcast/stories.json?t=1790674271"
+        },
+        {
+          "name": "transcript.md",
+          "remote_path": "/workspace/output/transcript.md",
+          "size_bytes": 928,
+          "url": "/outputs/run_1790674055/podcast/transcript.md?t=1790674278"
+        },
+        {
+          "name": "transcript_bedtime.md",
+          "remote_path": "/workspace/output/transcript_bedtime.md",
+          "size_bytes": 784,
+          "url": "/outputs/run_1790674055/podcast/transcript_bedtime.md?t=1792600009"
+        },
+        {
+          "name": "transcript_energetic.md",
+          "remote_path": "/workspace/output/transcript_energetic.md",
+          "size_bytes": 1043,
+          "url": "/outputs/run_1790674055/podcast/transcript_energetic.md?t=1792600009"
+        },
+        {
+          "name": "transcript_skeptical.md",
+          "remote_path": "/workspace/output/transcript_skeptical.md",
+          "size_bytes": 1058,
+          "url": "/outputs/run_1790674055/podcast/transcript_skeptical.md?t=1792600009"
+        }
+      ],
+      "logs": "Restored saved outputs from run_1790674055/podcast."
+    },
+    "live_qa": {
+      "role": "live_qa",
+      "status": "Finished",
+      "interaction_id": null,
+      "environment_id": null,
+      "output_text": "# Live Q&A Briefing: Top 5 Hacker News Stories\n\n## Story 1: Using any C++ library in Godot\n- **Score:** 17 points\n- **Comments:** 3 comments\n- **Author:** czoido\n- **Article URL:** https://blog.conan.io/cpp/conan/gamedev/godot/cmake/2026/09/29/Using-Any-Cpp-Library-In-Godot.html\n- **Hacker News Discussion:** https://news.ycombinator.com/item?id=49890051\n- **What readers are saying in the comments:**\n  - *valorzard*: \"If you know rust, the Godot rust bindings for GDExtension are also really good and let you use any Rust library in Godot (including tokio and async rust if you really want) https://godot-rust.github.io/\"\n  - *fwsgonzo*: \"Just don't forget the versioning script needed on at least Linux. It's either that or build with the same older distro Godot uses, so you have a matching libstdc++ version. You can link with a newer stdlibc++ but you will need a linker versioning script that hides your impl from the dynamic linker so you don't get random ghosts in your machine.\"\n  - *zerr*: \"> // Copy the position of every entity into the MultiMesh buffer So, is a zero-copy impossible due to world (C++ vs Godot) boundaries?\"\n\n## Story 2: Phyllotaxis: An audio-reactive LED display\n- **Score:** 138 points\n- **Comments:** 15 comments\n- **Author:** evakhoury\n- **Article URL:** https://jagi.studio/posts/phyllotaxis/\n- **Hacker News Discussion:** https://news.ycombinator.com/item?id=49880411\n- **What readers are saying in the comments:**\n  - *throwaway219450*: \"Very cool. 5-fold symmetry on the PCB to use up the board allowance is particularly neat. A trick that poor hobbyists learn early on is to make pads a little larger than necessary for SMT parts so you've got somewhere to wick solder onto. Neopixels (5050 LEDs) are reasonable to hand-solder since the pads extend up the sides of the package, but you can also d\"\n  - *turbine401*: \"Nice. I make a similar LED fixture with 256 leds https://lazaruslightworks.com/shop\"\n  - *XRG*: \"Love how the 5 PCBs slot into each other to form the final shape. With respect to the assembly: do yourself a massive favor and let the PCB fab also assemble the LEDs. With a simple bill of materials like this it will add very little cost, it saves you a _lot_ of time, and it might also reduce the chance of component damage from adding too much heat or from \"\n\n## Story 3: The systems that no one will test\n- **Score:** 51 points\n- **Comments:** 19 comments\n- **Author:** perone\n- **Article URL:** https://blog.christianperone.com/2026/09/the-systems-that-no-one-will-test/\n- **Hacker News Discussion:** https://news.ycombinator.com/item?id=49876052\n- **What readers are saying in the comments:**\n  - *areoform*: \"The narrative around security and LLMs doesn't make sense to me. From my perspective, this is an emergency because it has been turned into an emergency. I think that everyone involved has the best of intentions, but this is playing out like a greek play. In avoiding what they fear, they've realized that fear. An example of this is the story of Oedipus Rex, i\"\n  - *Modified3019*: \"Relevant: https://www.reddit.com/r/YouShouldKnow/comments/1wssf4u/ysk_... https://imgur.com/a/6FaQQhb (original post before being taken down by mods) >The Work Number is an Equifax (who famously had a massive data breach a few years back) owned database with employment and pay information. >You can create a login on theworknumber .com and pull your report. M\"\n  - *teiferer*: \"> I honestly don\u2019t blame them: [...] software is software That attitude is the problem. Why does our industry have that attitude towards quality? Every bike shop in my little town is better with quality than the average software shop in the world. Yes, software is more complex than bicycle. But a software engineer also gets paid 10x and has the luxury of spe\"\n\n## Story 4: Booted up in 1993, this server still runs \u2013 but not for much longer (2017)\n- **Score:** 38 points\n- **Comments:** 8 comments\n- **Author:** doener\n- **Article URL:** https://www.computerworld.com/article/1673071/booted-up-in-1993-this-server-still-runs-but-not-for-much-longer-2.html\n- **Hacker News Discussion:** https://news.ycombinator.com/item?id=49870376\n- **What readers are saying in the comments:**\n  - *nineteen999*: \"We use to run Stratus VOS on Continuum series hardware at a lottery/poker machine company I worked at in the mid 2000's. It handled the jackpot system which decided which of 13,500 poker machines in our state would jackpot at any given time. A reliable beast - never failed once in the entire time I worked there. Based on PA-RISC if I recall correctly.\"\n  - *voidUpdate*: \"> \"This system runs an older version Stratus proprietary VOS operating system, which Hogan believes hasn\u2019t been updated since the early 2000s. \u201cIt\u2019s been extremely stable,\u2019 he said.\" That's not particularly surprising to be honest. If it's a server operating system, on hardware that doesn't change, there's not really a reason to update the OS unless there's \"\n  - *K0balt*: \"Story time: I got handed a ticket to go change a UPS in a \u201cserver room\u201d. I was in Fairbanks visiting family, I had some downtime, so I decided to do some \u201cslumming\u201d to break up the monotony and relive some of the good old days before I was more boardroom than server room. Besides, a cool grand for what I figured was 2 hours work appealed to me on some \u201cmiss \"\n\n## Story 5: Pirating the Pirates\n- **Score:** 579 points\n- **Comments:** 281 comments\n- **Author:** piotrgrabowski\n- **Article URL:** https://mubi.com/en/notebook/posts/pirating-the-pirates\n- **Hacker News Discussion:** https://news.ycombinator.com/item?id=49880036\n- **What readers are saying in the comments:**\n  - *schlauerfox*: \"One thing to note, is that the library of congress has the power to create the exceptions to the DMCA. The EFF lobbies for expansion of the exact powers the article is advocating for. https://www.eff.org/issues/dmca-rulemaking\"\n  - *alexpotato*: \"> Spencer Draper\u2014best known as the Damn Fool Idealistic Crusader on YouTube, where he reviews the technical and historical aspects of digital releases with a rigor usually reserved for scholarly peer review I will occasionally think about various topics \"I'm really into but is anyone else in to ??\" And then I read a quote like the above and I realize that, f\"\n  - *javcasas*: \"Kinda related, but I hate how the big studios go after old videogames and try to take them down. It looks like, in the future, this era will be called the \"digital dark ages\", not because all the stuff got lost to bitrot, but because all the stuff became illegal to own so that the studios could sell the new stuff again and again.\"",
+      "takeaways": "",
+      "storyboard": "",
+      "narration_script": "",
+      "omni_prompt": "",
+      "podcast_styles": {},
+      "transcript": "",
+      "files": [
+        {
+          "name": "live_briefing.md",
+          "remote_path": "/workspace/output/live_briefing.md",
+          "size_bytes": 6663,
+          "url": "/outputs/run_1790674055/live_qa/live_briefing.md?t=1790674156"
+        },
+        {
+          "name": "stories.json",
+          "remote_path": "/workspace/output/stories.json",
+          "size_bytes": 7200,
+          "url": "/outputs/run_1790674055/live_qa/stories.json?t=1790674163"
+        }
+      ],
+      "logs": "Restored saved outputs from run_1790674055/live_qa."
+    }
+  },
+  "stories": [
+    {
+      "id": 49890051,
+      "title": "Using any C++ library in Godot",
+      "url": "https://blog.conan.io/cpp/conan/gamedev/godot/cmake/2026/09/29/Using-Any-Cpp-Library-In-Godot.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49890051",
+      "score": 17,
+      "comments": 3,
+      "by": "czoido"
+    },
+    {
+      "id": 49880411,
+      "title": "Phyllotaxis: An audio-reactive LED display",
+      "url": "https://jagi.studio/posts/phyllotaxis/",
+      "hn_url": "https://news.ycombinator.com/item?id=49880411",
+      "score": 137,
+      "comments": 15,
+      "by": "evakhoury"
+    },
+    {
+      "id": 49876052,
+      "title": "The systems that no one will test",
+      "url": "https://blog.christianperone.com/2026/09/the-systems-that-no-one-will-test/",
+      "hn_url": "https://news.ycombinator.com/item?id=49876052",
+      "score": 51,
+      "comments": 19,
+      "by": "perone"
+    },
+    {
+      "id": 49870376,
+      "title": "Booted up in 1993, this server still runs \u2013 but not for much longer (2017)",
+      "url": "https://www.computerworld.com/article/1673071/booted-up-in-1993-this-server-still-runs-but-not-for-much-longer-2.html",
+      "hn_url": "https://news.ycombinator.com/item?id=49870376",
+      "score": 38,
+      "comments": 8,
+      "by": "doener"
+    },
+    {
+      "id": 49880036,
+      "title": "Pirating the Pirates",
+      "url": "https://mubi.com/en/notebook/posts/pirating-the-pirates",
+      "hn_url": "https://news.ycombinator.com/item?id=49880036",
+      "score": 579,
+      "comments": 281,
+      "by": "piotrgrabowski"
+    }
+  ],
+  "qa_history": [],
+  "last_qa_interaction_id": null
+}

@@ -1,0 +1,26 @@
+# Secrets & local API keys
+.cached_api_key
+.env
+.env.*
+
+# Virtual environment & Python cache
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS & IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary media scratch files
+**/temp_*.mp4
+**/omni_ref_*.json
+**/.hud_overlays/
+**/.tmp_*
+
+# Ignore scratch output runs except the golden demo session (run_1790674055)
+static/outputs/*
+!static/outputs/run_1790674055/

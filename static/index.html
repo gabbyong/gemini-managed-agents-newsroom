@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technology news briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF9F5;
+      --surface: #FFFFFF;
+      --ink: #0B0C0C;
+      --muted: #505A5F;
+      --rule: #D8DDE0;
+      --rule-strong: #0B0C0C;
+      --focus: #FFDD00;
+      --link: #1D70B8;
+      --link-hover: #003078;
+      --error: #D4351C;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 2.75rem 1.75rem 5rem;
+    }
+
+    /* Top masthead and controls */
+    .top-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 2px solid var(--rule-strong);
+    }
+
+    @media (min-width: 980px) {
+      .top-layout {
+        grid-template-columns: 6fr 6fr;
+        gap: 3.5rem;
+        align-items: start;
+      }
+    }
+
+    h1 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem 0;
+      color: var(--ink);
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--muted);
+      margin: 0 0 1.75rem 0;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.65rem 0;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 0.85rem 0;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    /* Live stories list */
+    .stories-section {
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .stories-list {
+      margin: 0;
+      padding: 0 0 0 1.25rem;
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .stories-list li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.2rem;
+    }
+
+    .story-meta {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-left: 0.35rem;
+    }
+
+    /* Form elements */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1.35rem;
+    }
+
+    @media (min-width: 600px) {
+      .options-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+      color: var(--ink);
+    }
+
+    .hint {
+      display: block;
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      line-height: 1.4;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.96rem;
+      padding: 0.55rem 0.7rem;
+      border: 2px solid var(--ink);
+      background-color: #FFFFFF;
+      color: var(--ink);
+      border-radius: 0;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    select:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 0;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 600;
+      padding: 0.6rem 1.25rem;
+      background-color: var(--ink);
+      color: #FFFFFF;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      cursor: pointer;
+      transition: background-color 0.12s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #333739;
+      border-color: #333739;
+    }
+
+    button:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 0;
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .button-secondary {
+      background-color: transparent;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      padding: 0.5rem 1rem;
+      font-size: 0.92rem;
+    }
+
+    .button-secondary:hover:not(:disabled) {
+      background-color: #EFECE6;
+      color: var(--ink);
+    }
+
+    .error-message {
+      color: var(--error);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin: 0.85rem 0 0 0;
+    }
+
+    /* 4 Parallel Agent Boxes Grid */
+    .agents-grid {
+      margin-top: 2.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    @media (min-width: 860px) {
+      .agents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .agent-box {
+      background-color: var(--surface);
+      border: 2px solid var(--rule-strong);
+      padding: 1.5rem 1.65rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 360px;
+    }
+
+    .agent-box-top {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .agent-box-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding-bottom: 0.85rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .status-line {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Media outputs inside each box */
+    .media-stage {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .media-stage img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+    }
+
+    .view-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.88rem;
+      margin-top: 0.6rem;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background-color: #000;
+      margin: 0.25rem 0 0.5rem 0;
+    }
+
+    audio {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0 0.75rem 0;
+    }
+
+    .transcript-body {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      color: var(--ink);
+      margin-top: 0.85rem;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+    }
+
+    .transcript-body p {
+      margin-bottom: 0.7rem;
+    }
+
+    .summary-prose {
+      font-size: 0.94rem;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-top: 0.85rem;
+      white-space: pre-line;
+    }
+
+    /* 2x2 grid for the 4 styled infographics inside Box 1 */
+    .takeaways-block {
+      margin: 0.25rem 0 1rem 0;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .takeaways-heading {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .infographic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+      margin: 0.5rem 0 0.75rem 0;
+    }
+
+    @media (max-width: 560px) {
+      .infographic-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .infographic-card {
+      border: 1px solid var(--rule);
+      padding: 0.55rem;
+      background-color: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .infographic-card-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .infographic-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+    }
+
+    .infographic-card-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    /* Infographic Progressive Placeholder Card */
+    .infographic-card.pending {
+      min-height: 220px;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--bg);
+      border: 1px dashed var(--rule);
+      text-align: center;
+      padding: 1.25rem 0.75rem;
+    }
+
+    .slot-spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--rule);
+      border-top-color: var(--ink);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 0.6rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Video Storyboard Block */
+    .storyboard-block {
+      margin-top: 0.85rem;
+      padding: 0.85rem 1rem;
+      background-color: var(--bg);
+      border: 1px solid var(--rule);
+    }
+
+    .storyboard-heading {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.65rem;
+    }
+
+    .storyboard-item {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .storyboard-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .storyboard-title {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .storyboard-summary {
+      color: #1D70B8;
+      font-size: 0.88rem;
+      margin-top: 0.25rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid #1D70B8;
+      font-weight: 500;
+    }
+
+    /* 3 Podcast Styles Tabs & Cards */
+    .podcast-tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .podcast-tab-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      background-color: transparent;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      cursor: pointer;
+    }
+
+    .podcast-tab-btn.active {
+      background-color: var(--ink);
+      color: #FFFFFF;
+      border-color: var(--ink);
+    }
+
+    .podcast-tab-btn.ready::after {
+      content: " ●";
+      color: #008537;
+    }
+
+    .podcast-style-pane {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .podcast-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .voice-tag {
+      font-weight: 600;
+      color: var(--ink);
+      background-color: var(--bg);
+      padding: 0.15rem 0.45rem;
+      border: 1px solid var(--rule);
+    }
+
+    /* Live VM execution log inside each box */
+    details.log-disclosure {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    details.log-disclosure summary {
+      cursor: pointer;
+      user-select: none;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .log-output {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      padding: 0.65rem;
+      background-color: var(--bg);
+      border: 1px solid var(--rule);
+      max-height: 180px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Follow-up form at the bottom of each box */
+    .followup-box {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .followup-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+
+    .followup-row input[type="text"] {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Box 4: Live Q&A thread */
+    .qa-thread {
+      margin-top: 1rem;
+      border-top: 1px solid var(--rule);
+      max-height: 260px;
+      overflow-y: auto;
+    }
+
+    .qa-turn {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .qa-speaker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .qa-text {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .qa-audio {
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+
+    .voice-controls {
+      margin-top: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .session-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.5rem;
+      background-color: var(--surface);
+      border: 1px solid var(--rule-strong);
+      font-size: 0.9rem;
+    }
+
+    .session-bar-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .session-bar-left,
+    .session-bar-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .session-bar select {
+      width: auto;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.88rem;
+    }
+
+    details.session-stories-toggle {
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+
+    details.session-stories-toggle summary {
+      cursor: pointer;
+      user-select: none;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .button-small {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.65rem;
+      background-color: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule-strong);
+      box-shadow: none;
+    }
+
+    .button-small:hover:not(:disabled) {
+      background-color: var(--bg);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <!-- Top header: Left column has title + live HN preview; Right column has controls -->
+    <div class="top-layout">
+      <div>
+        <header>
+          <h1>Technology news briefing</h1>
+          <p class="lead">
+            Spin up four managed agents in parallel virtual machines to produce an infographic, a video, a podcast, and a live question-and-answer desk from today’s top stories.
+          </p>
+        </header>
+
+        <section class="stories-section" aria-labelledby="live-stories-heading">
+          <h3 id="live-stories-heading">Top 5 stories on Hacker News right now</h3>
+          <ol id="hnList" class="stories-list">
+            <li class="story-meta">Loading today’s stories…</li>
+          </ol>
+        </section>
+      </div>
+
+      <section aria-label="Create briefing">
+        <div id="apiKeyGroup" class="form-group">
+          <label for="apiKeyInput">Gemini API key</label>
+          <span id="apiKeyHint" class="hint">Paste your Gemini API key (saved locally in your browser).</span>
+          <div style="display:flex; gap:0.5rem; align-items:stretch;">
+            <input id="apiKeyInput" type="password" autocomplete="off" placeholder="AIzaSy... (enter your Gemini API key)" oninput="saveApiKeyLocal(this.value)" style="flex:1; min-width:0;" />
+            <button id="toggleApiKeyBtn" type="button" class="button-small" onclick="toggleApiKeyVisibility()" style="white-space:nowrap; padding:0 0.75rem;">Show</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="topicInput">Filter by topic (optional)</label>
+          <span class="hint">
+            For example, artificial intelligence, compilers, or energy. Leave blank to use today’s top stories.
+          </span>
+          <input id="topicInput" type="text" value="" placeholder="All top stories" />
+        </div>
+
+        <div class="options-grid">
+          <div>
+            <label for="podcastStyleSelect">Podcast style</label>
+            <span class="hint">Tone of the script and voices.</span>
+            <select id="podcastStyleSelect" onchange="handleStyleChange()">
+              <option value="energetic">Energetic morning show</option>
+              <option value="bedtime">Bedtime story</option>
+              <option value="calm">Calm news summary</option>
+              <option value="skeptical">Skeptical engineers</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="podcastVoicesSelect">Podcast voices</label>
+            <span class="hint">Voices for hosts Alex and Sam.</span>
+            <select id="podcastVoicesSelect">
+              <option value="Kore,Puck">Kore and Puck (firm and upbeat)</option>
+              <option value="Sulafat,Enceladus">Sulafat and Enceladus (warm and gentle)</option>
+              <option value="Charon,Aoede">Charon and Aoede (clear and conversational)</option>
+              <option value="Fenrir,Zephyr">Fenrir and Zephyr (lively and bright)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="launchBtn" type="button" onclick="launchParallelAgents()">
+          Create new briefing
+        </button>
+
+        <p id="globalError" class="error-message hidden" role="alert"></p>
+      </section>
+    </div>
+
+    <!-- Session revival & regeneration bar + collapsible recorded Top 5 HN links -->
+    <div id="sessionBar" class="session-bar hidden">
+      <div class="session-bar-row">
+        <div class="session-bar-left">
+          <strong>Saved session:</strong>
+          <select id="sessionSelect" onchange="switchSavedSession(this.value)" aria-label="Select saved session"></select>
+          <span class="hint" style="margin:0;">Virtual machines stay resumable for 7 days.</span>
+        </div>
+        <div class="session-bar-right">
+          <button type="button" class="button-small" onclick="regenerateAllInVms()">
+            Regenerate all 4 in VMs
+          </button>
+        </div>
+      </div>
+
+      <details id="sessionStoriesDetails" class="session-stories-toggle hidden">
+        <summary id="sessionStoriesSummary">Top 5 Hacker News links recorded in this session</summary>
+        <ol id="sessionStoriesList" class="stories-list" style="margin-top: 0.65rem;"></ol>
+      </details>
+    </div>
+
+    <!-- 4 Parallel Managed Agent Boxes -->
+    <main id="resultsArea" class="agents-grid">
+
+      <!-- Box 1: Infographic -->
+      <section class="agent-box" aria-labelledby="heading-infographic">
+        <div class="agent-box-top">
+          <div class="agent-box-header">
+            <h2 id="heading-infographic">1. Infographic</h2>
+            <div class="header-actions">
+              <p id="status-infographic" class="status-line">Waiting to start</p>
+              <button type="button" class="button-small" onclick="regenerateRole('infographic')">Regenerate</button>
+            </div>
+          </div>
+
+          <div id="summary-infographic" class="takeaways-block hidden"></div>
+          <div id="output-infographic" class="media-stage hidden"></div>
+
+          <details id="details-infographic" class="log-disclosure" open>
+            <summary>Virtual machine log (<span id="env-infographic">not started</span>)</summary>
+            <div id="term-infographic" class="log-output">Waiting for briefing to start…</div>
+          </details>
+        </div>
+
+        <div id="followup-wrap-infographic" class="followup-box hidden">
+          <label for="followup-infographic">Change the infographic</label>
+          <span class="hint">Runs in the same virtual machine.</span>
+          <div class="followup-row">
+            <input id="followup-infographic" type="text" placeholder="For example, change the title to Weekly Review" />
+            <button type="button" class="button-secondary" onclick="sendFollowup('infographic')">Update</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Box 2: Video -->
+      <section class="agent-box" aria-labelledby="heading-video">
+        <div class="agent-box-top">
+          <div class="agent-box-header">
+            <h2 id="heading-video">2. Video</h2>
+            <div class="header-actions">
+              <p id="status-video" class="status-line">Waiting to start</p>
+              <button type="button" class="button-small" onclick="regenerateRole('video')">Regenerate</button>
+            </div>
+          </div>
+
+          <div id="output-video" class="media-stage hidden"></div>
+          <div id="summary-video" class="summary-prose hidden"></div>
+
+          <details id="details-video" class="log-disclosure" open>
+            <summary>Virtual machine log (<span id="env-video">not started</span>)</summary>
+            <div id="term-video" class="log-output">Waiting for briefing to start…</div>
+          </details>
+        </div>
+
+        <div id="followup-wrap-video" class="followup-box hidden">
+          <label for="followup-video">Change the video</label>
+          <span class="hint">Runs in the same virtual machine.</span>
+          <div class="followup-row">
+            <input id="followup-video" type="text" placeholder="For example, focus on the second story" />
+            <button type="button" class="button-secondary" onclick="sendFollowup('video')">Update</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Box 3: Podcast -->
+      <section class="agent-box" aria-labelledby="heading-podcast">
+        <div class="agent-box-top">
+          <div class="agent-box-header">
+            <h2 id="heading-podcast">3. Podcast</h2>
+            <div class="header-actions">
+              <p id="status-podcast" class="status-line">Waiting to start</p>
+              <button type="button" class="button-small" onclick="regenerateRole('podcast')">Regenerate</button>
+            </div>
+          </div>
+
+          <div id="output-podcast" class="media-stage hidden"></div>
+
+          <details id="details-podcast" class="log-disclosure" open>
+            <summary>Virtual machine log (<span id="env-podcast">not started</span>)</summary>
+            <div id="term-podcast" class="log-output">Waiting for briefing to start…</div>
+          </details>
+        </div>
+
+        <div id="followup-wrap-podcast" class="followup-box hidden">
+          <label for="followup-podcast">Change the podcast</label>
+          <span class="hint">Runs in the same virtual machine and re-synthesizes the audio.</span>
+          <div class="followup-row">
+            <input id="followup-podcast" type="text" placeholder="For example, make the script shorter" />
+            <button type="button" class="button-secondary" onclick="sendFollowup('podcast')">Update</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Box 4: Live Q&A (purely live voice driven via Gemini Live API) -->
+      <section class="agent-box" aria-labelledby="heading-live_qa">
+        <div class="agent-box-top">
+          <div class="agent-box-header">
+            <h2 id="heading-live_qa">4. Ask questions live</h2>
+            <div class="header-actions">
+              <p id="status-live_qa" class="status-line">Ready for questions</p>
+              <button type="button" class="button-small" onclick="regenerateRole('live_qa')">Regenerate</button>
+            </div>
+          </div>
+
+          <p class="hint">
+            Talk live with your microphone about the top 5 Hacker News stories from this session. Interrupt at any time.
+          </p>
+
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label for="liveThinkingSelect" style="font-size: 0.88rem;">Live model and thinking depth</label>
+            <select id="liveThinkingSelect" style="padding: 0.4rem 0.6rem; font-size: 0.9rem;">
+              <option value="standard">gemini-3.8-live (Standard low-latency)</option>
+              <option value="extended">gemini-3.8-live-extended-thinking (High thinking_level)</option>
+            </select>
+          </div>
+
+          <div class="voice-controls">
+            <button id="liveVoiceBtn" type="button" onclick="toggleLiveVoice()">
+              Start live voice
+            </button>
+            <span id="liveVoiceStatus" class="status-line">Microphone off</span>
+          </div>
+
+          <div id="qaThread" class="qa-thread">
+            <p id="qaEmptyNote" class="hint" style="margin-top: 0.75rem;">No voice questions asked yet.</p>
+          </div>
+
+          <div id="summary-live_qa" class="summary-prose hidden"></div>
+
+          <details id="details-live_qa" class="log-disclosure" open>
+            <summary>Virtual machine log (<span id="env-live_qa">not started</span>)</summary>
+            <div id="term-live_qa" class="log-output">Waiting for briefing to start…</div>
+          </details>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    let ws = null;
+    let currentRunId = null;
+    let lastQaInteractionId = null;
+
+    const vmState = {
+      infographic: { interaction_id: null, environment_id: null },
+      video: { interaction_id: null, environment_id: null },
+      podcast: { interaction_id: null, environment_id: null },
+      live_qa: { interaction_id: null, environment_id: null },
+    };
+
+    // Persistent Live Voice (Gemini Live API) WebSocket & Web Audio state
+    let liveWs = null;
+    let userWantsLiveVoice = false;
+    let isLiveVoiceActive = false;
+    let liveReconnectTimer = null;
+    let liveResumptionHandle = null;
+    let micStream = null;
+    let audioContext = null;
+    let micSourceNode = null;
+    let micProcessor = null;
+    let micSilenceGain = null;
+    let nextPlayTime = 0;
+    let activeAudioSources = [];
+    let activeInputTurnEl = null;
+    let activeOutputTurnEl = null;
+
+    function toggleApiKeyVisibility() {
+      const input = document.getElementById('apiKeyInput');
+      const btn = document.getElementById('toggleApiKeyBtn');
+      if (!input || !btn) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+      } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+      }
+    }
+
+    function saveApiKeyLocal(val) {
+      const hint = document.getElementById('apiKeyHint');
+      try {
+        const clean = (val || '').trim();
+        if (clean) {
+          localStorage.setItem('newsroom_api_key', clean);
+          if (hint) hint.textContent = 'API key saved in your browser for this session.';
+          fetch('/api/save-key', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ api_key: clean }),
+          }).catch(() => {});
+        } else {
+          localStorage.removeItem('newsroom_api_key');
+          if (hint) hint.textContent = 'Paste your Gemini API key (saved locally in your browser).';
+        }
+      } catch (e) {}
+    }
+
+    function getApiKeyValue() {
+      const apiKeyInput = document.getElementById('apiKeyInput');
+      const fromInput = apiKeyInput ? apiKeyInput.value.trim() : '';
+      if (fromInput) {
+        saveApiKeyLocal(fromInput);
+        return fromInput;
+      }
+      try {
+        return localStorage.getItem('newsroom_api_key') || '';
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function handleStyleChange() {
+      const style = document.getElementById('podcastStyleSelect').value;
+      const voiceSelect = document.getElementById('podcastVoicesSelect');
+      if (style === 'bedtime') {
+        voiceSelect.value = 'Sulafat,Enceladus';
+      } else if (style === 'energetic') {
+        voiceSelect.value = 'Kore,Puck';
+      } else if (style === 'calm') {
+        voiceSelect.value = 'Charon,Aoede';
+      } else if (style === 'skeptical') {
+        voiceSelect.value = 'Fenrir,Zephyr';
+      }
+    }
+
+    function getPodcastOptions() {
+      const style = document.getElementById('podcastStyleSelect').value || 'energetic';
+      const voicePair = (document.getElementById('podcastVoicesSelect').value || 'Kore,Puck').split(',');
+      return {
+        style: style,
+        voice_alex: voicePair[0] || 'Kore',
+        voice_sam: voicePair[1] || 'Puck',
+      };
+    }
+
+    async function initPage() {
+      let hasLocalKey = false;
+      try {
+        const savedKey = localStorage.getItem('newsroom_api_key') || '';
+        const apiKeyInput = document.getElementById('apiKeyInput');
+        if (apiKeyInput && savedKey) {
+          apiKeyInput.value = savedKey;
+          hasLocalKey = true;
+          saveApiKeyLocal(savedKey);
+        }
+      } catch (e) {}
+
+      try {
+        const cfgRes = await fetch('/api/config');
+        const cfg = await cfgRes.json();
+        const hint = document.getElementById('apiKeyHint');
+        if (cfg.has_env_key && !hasLocalKey && hint) {
+          hint.textContent = 'Server environment key detected — or paste your own Gemini API key below to override.';
+        }
+      } catch (e) {}
+
+      try {
+        const hnRes = await fetch('/api/hn-preview');
+        const hnData = await hnRes.json();
+        const list = document.getElementById('hnList');
+        if (hnData.stories && hnData.stories.length > 0) {
+          list.innerHTML = hnData.stories.map(s =>
+            `<li>
+              <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>
+              <span class="story-meta">${s.score} points · ${s.comments} comments</span>
+            </li>`
+          ).join('');
+        } else {
+          list.innerHTML = '<li>Could not load live stories right now.</li>';
+        }
+      } catch (e) {}
+
+      await loadSessionsAndRestore();
+    }
+
+    function renderSessionStories(stories, runId) {
+      const detailsEl = document.getElementById('sessionStoriesDetails');
+      const summaryEl = document.getElementById('sessionStoriesSummary');
+      const listEl = document.getElementById('sessionStoriesList');
+      if (!detailsEl || !listEl) return;
+
+      if (!stories || stories.length === 0) {
+        detailsEl.classList.add('hidden');
+        listEl.innerHTML = '';
+        return;
+      }
+
+      detailsEl.classList.remove('hidden');
+      if (summaryEl) {
+        summaryEl.textContent = `Top ${stories.length} Hacker News links recorded in this session (${runId || 'saved'})`;
+      }
+
+      listEl.innerHTML = stories.map(s => {
+        const articleUrl = s.url || s.hn_url || `https://news.ycombinator.com/item?id=${s.id || ''}`;
+        const hnUrl = s.hn_url || (s.id ? `https://news.ycombinator.com/item?id=${s.id}` : '');
+        const hnDiscussionLink = hnUrl && hnUrl !== articleUrl
+          ? ` · <a href="${escapeHtml(hnUrl)}" target="_blank" rel="noopener">HN discussion (${s.comments || 0} comments)</a>`
+          : ` · ${s.comments || 0} comments`;
+        return `<li>
+          <a href="${escapeHtml(articleUrl)}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>
+          <span class="story-meta">${s.score || 0} points${hnDiscussionLink}</span>
+        </li>`;
+      }).join('');
+    }
+
+    async function loadSessionsAndRestore(preferredRunId = null) {
+      try {
+        const res = await fetch('/api/sessions');
+        const data = await res.json();
+        const sessions = data.sessions || [];
+        if (sessions.length === 0) return;
+
+        const bar = document.getElementById('sessionBar');
+        const sel = document.getElementById('sessionSelect');
+        if (bar && sel) {
+          bar.classList.remove('hidden');
+          const targetId = preferredRunId || (data.latest_session && data.latest_session.run_id) || sessions[0].run_id;
+          sel.innerHTML = sessions.map(s => {
+            const dt = new Date((s.created_at || 0) * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            return `<option value="${escapeHtml(s.run_id)}" ${s.run_id === targetId ? 'selected' : ''}>${escapeHtml(s.run_id)} (${dt} · ${s.completed_count}/4 ready)</option>`;
+          }).join('');
+
+          if (preferredRunId && (!data.latest_session || data.latest_session.run_id !== preferredRunId)) {
+            const sRes = await fetch(`/api/session/${encodeURIComponent(preferredRunId)}`);
+            if (sRes.ok) {
+              const sJson = await sRes.json();
+              if (sJson.session) {
+                restoreSessionToUI(sJson.session);
+                return;
+              }
+            }
+          }
+          if (data.latest_session) {
+            restoreSessionToUI(data.latest_session);
+          }
+        }
+      } catch (e) {}
+    }
+
+    async function switchSavedSession(runId) {
+      if (!runId) return;
+      try {
+        const res = await fetch(`/api/session/${encodeURIComponent(runId)}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.session) {
+          restoreSessionToUI(data.session);
+        }
+      } catch (e) {}
+    }
+
+    function restoreSessionToUI(sess) {
+      if (!sess || !sess.run_id) return;
+      currentRunId = sess.run_id;
+      lastQaInteractionId = sess.last_qa_interaction_id || null;
+
+      if (sess.topic && sess.topic !== 'Top Hacker News') {
+        const tInput = document.getElementById('topicInput');
+        if (tInput) tInput.value = sess.topic;
+      }
+
+      renderSessionStories(sess.stories || [], sess.run_id);
+
+      const agents = sess.agents || {};
+      ['infographic', 'video', 'podcast', 'live_qa'].forEach(role => {
+        const ag = agents[role] || {};
+        vmState[role].interaction_id = ag.interaction_id || null;
+        vmState[role].environment_id = ag.environment_id || null;
+        vmState[role].files = ag.files || [];
+        vmState[role].storyboard = ag.storyboard || '';
+        vmState[role].narration_script = ag.narration_script || '';
+        vmState[role].omni_prompt = ag.omni_prompt || '';
+        vmState[role].podcast_styles = ag.podcast_styles || {};
+
+        const envEl = document.getElementById(`env-${role}`);
+        if (envEl) {
+          envEl.textContent = ag.environment_id ? `VM ${ag.environment_id.slice(0, 12)}` : 'saved on disk';
+        }
+
+        const term = document.getElementById(`term-${role}`);
+        if (term) {
+          term.textContent = ag.logs || 'Restored from saved session.';
+        }
+
+        setStatus(role, ag.status || 'Restored');
+
+        const outEl = document.getElementById(`output-${role}`);
+        const sumEl = document.getElementById(`summary-${role}`);
+        if (outEl) {
+          outEl.innerHTML = '';
+          outEl.classList.add('hidden');
+        }
+        if (sumEl) {
+          sumEl.innerHTML = '';
+          sumEl.classList.add('hidden');
+        }
+
+        if ((ag.files && ag.files.length > 0) || ag.output_text || ag.takeaways || ag.transcript || ag.storyboard || (ag.podcast_styles && Object.keys(ag.podcast_styles).length > 0)) {
+          renderRoleArtifact(role, ag);
+          const fw = document.getElementById(`followup-wrap-${role}`);
+          if (fw) fw.classList.remove('hidden');
+        }
+      });
+
+      const thread = document.getElementById('qaThread');
+      if (thread) {
+        thread.innerHTML = '<p id="qaEmptyNote" class="hint" style="margin-top: 0.75rem;">No voice questions asked yet.</p>';
+        const qaHist = sess.qa_history || [];
+        qaHist.forEach(item => {
+          if (item.question) appendQaTurn('You (voice)', item.question);
+          if (item.answer) appendQaTurn('Answer (live)', item.answer, item.audio_url, false);
+        });
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function setStatus(role, text) {
+      const el = document.getElementById(`status-${role}`);
+      if (el) el.textContent = text;
+    }
+
+    function appendLog(role, line) {
+      const details = document.getElementById(`details-${role}`);
+      const term = document.getElementById(`term-${role}`);
+      if (!term || !details) return;
+      if (term.textContent === 'Waiting for briefing to start…') {
+        term.textContent = '';
+      }
+      term.textContent += line + '\n';
+      term.scrollTop = term.scrollHeight;
+    }
+
+    function ensureWebSocket() {
+      return new Promise((resolve, reject) => {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          resolve(ws);
+          return;
+        }
+        const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        ws = new WebSocket(`${proto}//${window.location.host}/ws/newsroom`);
+        ws.onopen = () => resolve(ws);
+        ws.onerror = (err) => reject(err);
+        ws.onmessage = (msg) => handleServerEvent(JSON.parse(msg.data));
+      });
+    }
+
+    async function launchParallelAgents() {
+      const errEl = document.getElementById('globalError');
+      errEl.classList.add('hidden');
+
+      const topic = document.getElementById('topicInput').value.trim() || 'Top Hacker News';
+      const apiKey = getApiKeyValue();
+      const podcastOptions = getPodcastOptions();
+
+      ['infographic', 'video', 'podcast', 'live_qa'].forEach(role => {
+        const term = document.getElementById(`term-${role}`);
+        if (term) term.textContent = '';
+        const details = document.getElementById(`details-${role}`);
+        if (details) details.open = true;
+        setStatus(role, 'Starting virtual machine…');
+      });
+
+      const btn = document.getElementById('launchBtn');
+      btn.disabled = true;
+      btn.textContent = 'Creating briefing…';
+
+      try {
+        const socket = await ensureWebSocket();
+        socket.send(JSON.stringify({
+          action: 'launch_parallel',
+          topic: topic,
+          api_key: apiKey,
+          roles: ['infographic', 'video', 'podcast', 'live_qa'],
+          podcast_options: podcastOptions,
+          reuse_vms: false,
+        }));
+      } catch (e) {
+        showGlobalError('Could not connect to the server. Check that it is running.');
+      }
+    }
+
+    async function regenerateAllInVms() {
+      const errEl = document.getElementById('globalError');
+      errEl.classList.add('hidden');
+
+      const topic = document.getElementById('topicInput').value.trim() || 'Top Hacker News';
+      const apiKey = getApiKeyValue();
+      const podcastOptions = getPodcastOptions();
+
+      ['infographic', 'video', 'podcast', 'live_qa'].forEach(role => {
+        const details = document.getElementById(`details-${role}`);
+        if (details) details.open = true;
+        setStatus(role, 'Regenerating in VM…');
+        appendLog(role, '\n> Regenerating prompt in virtual machine…');
+      });
+
+      try {
+        const socket = await ensureWebSocket();
+        socket.send(JSON.stringify({
+          action: 'launch_parallel',
+          run_id: currentRunId,
+          topic: topic,
+          api_key: apiKey,
+          roles: ['infographic', 'video', 'podcast', 'live_qa'],
+          podcast_options: podcastOptions,
+          reuse_vms: true,
+        }));
+      } catch (e) {
+        showGlobalError('Could not connect to the server.');
+      }
+    }
+
+    async function regenerateRole(role) {
+      const errEl = document.getElementById('globalError');
+      errEl.classList.add('hidden');
+
+      const topic = document.getElementById('topicInput').value.trim() || 'Top Hacker News';
+      const apiKey = getApiKeyValue();
+      const podcastOptions = getPodcastOptions();
+      const state = vmState[role] || {};
+
+      const details = document.getElementById(`details-${role}`);
+      if (details) details.open = true;
+      setStatus(role, 'Regenerating…');
+      appendLog(role, `\n> Regenerating ${role} prompt…`);
+
+      try {
+        const socket = await ensureWebSocket();
+        socket.send(JSON.stringify({
+          action: 'regenerate_role',
+          role: role,
+          run_id: currentRunId,
+          topic: topic,
+          api_key: apiKey,
+          podcast_options: podcastOptions,
+          environment_id: state.environment_id,
+          previous_interaction_id: state.interaction_id,
+        }));
+      } catch (e) {
+        showGlobalError('Could not connect to the server.');
+      }
+    }
+
+    async function sendFollowup(role) {
+      const inputEl = document.getElementById(`followup-${role}`);
+      const prompt = inputEl.value.trim();
+      if (!prompt) return;
+      const state = vmState[role];
+      const apiKey = getApiKeyValue();
+
+      const details = document.getElementById(`details-${role}`);
+      if (details) details.open = true;
+      setStatus(role, 'Updating in virtual machine…');
+      appendLog(role, `\n> Follow-up request: ${prompt}`);
+      inputEl.value = '';
+
+      const socket = await ensureWebSocket();
+      socket.send(JSON.stringify({
+        action: 'followup',
+        role: role,
+        prompt: prompt,
+        previous_interaction_id: state.interaction_id,
+        environment_id: state.environment_id,
+        run_id: currentRunId,
+        api_key: apiKey,
+        podcast_options: getPodcastOptions(),
+      }));
+    }
+
+    function appendQaTurn(speakerLabel, text, audioUrl, autoPlay = true) {
+      const emptyNote = document.getElementById('qaEmptyNote');
+      if (emptyNote) emptyNote.classList.add('hidden');
+
+      const thread = document.getElementById('qaThread');
+      const turn = document.createElement('div');
+      turn.className = 'qa-turn';
+
+      const spk = document.createElement('div');
+      spk.className = 'qa-speaker';
+      spk.textContent = speakerLabel;
+
+      const body = document.createElement('p');
+      body.className = 'qa-text';
+      body.textContent = text;
+
+      turn.appendChild(spk);
+      turn.appendChild(body);
+
+      if (audioUrl) {
+        const aud = document.createElement('audio');
+        aud.className = 'qa-audio';
+        aud.controls = true;
+        aud.autoplay = Boolean(autoPlay);
+        aud.src = audioUrl;
+        turn.appendChild(aud);
+      }
+
+      thread.appendChild(turn);
+      thread.scrollTop = thread.scrollHeight;
+      return body;
+    }
+
+    // -----------------------------------------------------------------------
+    // Persistent Gemini Live API Bidirectional Voice Streaming (/ws/live-voice)
+    // -----------------------------------------------------------------------
+    async function toggleLiveVoice() {
+      if (userWantsLiveVoice) {
+        stopLiveVoice();
+      } else {
+        await startLiveVoice();
+      }
+    }
+
+    function clearAudioPlaybackQueue() {
+      while (activeAudioSources.length > 0) {
+        const src = activeAudioSources.pop();
+        try {
+          src.stop();
+          src.disconnect();
+        } catch (e) {}
+      }
+      if (audioContext) {
+        nextPlayTime = audioContext.currentTime;
+      } else {
+        nextPlayTime = 0;
+      }
+    }
+
+    async function startLiveVoice() {
+      const statusEl = document.getElementById('liveVoiceStatus');
+      const btn = document.getElementById('liveVoiceBtn');
+      const apiKey = getApiKeyValue();
+
+      userWantsLiveVoice = true;
+      isLiveVoiceActive = false;
+      btn.textContent = 'Stop live voice';
+      statusEl.style.color = '';
+      statusEl.textContent = 'Requesting microphone…';
+
+      try {
+        if (!micStream) {
+          micStream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              echoCancellation: true,
+              noiseSuppression: true,
+              autoGainControl: true,
+            }
+          });
+        }
+
+        if (!audioContext) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioContext.state === 'suspended') {
+          await audioContext.resume();
+        }
+        nextPlayTime = audioContext.currentTime;
+
+        if (!micProcessor) {
+          startMicCapture();
+        }
+
+        statusEl.textContent = 'Connecting to Gemini Live…';
+        connectLiveVoiceSocket(apiKey);
+      } catch (err) {
+        stopLiveVoice('Microphone permission was denied or unavailable.');
+      }
+    }
+
+    function connectLiveVoiceSocket(apiKey) {
+      if (!userWantsLiveVoice) return;
+      const statusEl = document.getElementById('liveVoiceStatus');
+      const opts = getPodcastOptions();
+      const thinkingMode = document.getElementById('liveThinkingSelect').value || 'standard';
+
+      if (liveWs) {
+        try { liveWs.onclose = null; liveWs.close(); } catch (e) {}
+        liveWs = null;
+      }
+
+      const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      liveWs = new WebSocket(`${proto}//${window.location.host}/ws/live-voice`);
+
+      liveWs.onopen = () => {
+        liveWs.send(JSON.stringify({
+          api_key: apiKey,
+          run_id: currentRunId,
+          voice: opts.voice_alex,
+          thinking_mode: thinkingMode,
+          resumption_handle: liveResumptionHandle,
+        }));
+      };
+
+      liveWs.onmessage = (ev) => {
+        const msg = JSON.parse(ev.data);
+        if (msg.type === 'live_connected') {
+          isLiveVoiceActive = true;
+          const modeLabel = msg.thinking_level === 'high' ? 'extended thinking' : 'low-latency';
+          statusEl.style.color = '';
+          statusEl.textContent = `Listening persistently (${msg.voice} · ${modeLabel}) — speak or interrupt anytime`;
+        } else if (msg.type === 'live_resumption_handle' && msg.handle) {
+          liveResumptionHandle = msg.handle;
+        } else if (msg.type === 'live_audio' && msg.data) {
+          playPcm24kChunk(msg.data);
+        } else if (msg.type === 'live_input_transcript' && msg.text) {
+          if (!activeInputTurnEl) {
+            activeInputTurnEl = appendQaTurn('You (voice)', msg.text);
+          } else {
+            activeInputTurnEl.textContent += msg.text;
+          }
+        } else if (msg.type === 'live_output_transcript' && msg.text) {
+          if (!activeOutputTurnEl) {
+            activeOutputTurnEl = appendQaTurn('Answer (live)', msg.text);
+            activeInputTurnEl = null;
+          } else {
+            activeOutputTurnEl.textContent += msg.text;
+          }
+        } else if (msg.type === 'live_thought' && msg.text) {
+          appendLog('live_qa', `[extended thinking] ${msg.text}`);
+        } else if (msg.type === 'live_turn_complete') {
+          activeInputTurnEl = null;
+          activeOutputTurnEl = null;
+        } else if (msg.type === 'live_interrupted') {
+          clearAudioPlaybackQueue();
+          activeOutputTurnEl = null;
+        } else if (msg.type === 'live_error') {
+          if (msg.missing_key) {
+            const keyGroup = document.getElementById('apiKeyGroup');
+            const keyInput = document.getElementById('apiKeyInput');
+            if (keyGroup) keyGroup.classList.remove('hidden');
+            if (keyInput) keyInput.focus();
+          }
+          stopLiveVoice(msg.error || 'Live voice connection error.');
+        }
+      };
+
+      liveWs.onclose = () => {
+        isLiveVoiceActive = false;
+        if (userWantsLiveVoice) {
+          statusEl.textContent = 'Reconnecting live voice session…';
+          if (liveReconnectTimer) clearTimeout(liveReconnectTimer);
+          liveReconnectTimer = setTimeout(() => {
+            if (userWantsLiveVoice) {
+              connectLiveVoiceSocket(getApiKeyValue());
+            }
+          }, 600);
+        }
+      };
+    }
+
+    function startMicCapture() {
+      if (!micStream || !audioContext) return;
+      micSourceNode = audioContext.createMediaStreamSource(micStream);
+      micProcessor = audioContext.createScriptProcessor(2048, 1, 1);
+      micSilenceGain = audioContext.createGain();
+      micSilenceGain.gain.value = 0;
+
+      const inRate = audioContext.sampleRate;
+      const outRate = 16000;
+
+      micProcessor.onaudioprocess = (e) => {
+        if (!userWantsLiveVoice || !isLiveVoiceActive || !liveWs || liveWs.readyState !== WebSocket.OPEN) return;
+        const inputData = e.inputBuffer.getChannelData(0);
+        const ratio = inRate / outRate;
+        const outLength = Math.floor(inputData.length / ratio);
+        const pcm16 = new Int16Array(outLength);
+        for (let i = 0; i < outLength; i++) {
+          const sample = Math.max(-1, Math.min(1, inputData[Math.floor(i * ratio)]));
+          pcm16[i] = sample < 0 ? sample * 0x8000 : sample * 0x7FFF;
+        }
+        const bytes = new Uint8Array(pcm16.buffer);
+        let binary = '';
+        for (let i = 0; i < bytes.byteLength; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        liveWs.send(JSON.stringify({
+          type: 'audio_chunk',
+          data: btoa(binary),
+        }));
+      };
+
+      micSourceNode.connect(micProcessor);
+      micProcessor.connect(micSilenceGain);
+      micSilenceGain.connect(audioContext.destination);
+    }
+
+    function playPcm24kChunk(base64Data) {
+      if (!audioContext) return;
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      const binaryStr = atob(base64Data);
+      const len = binaryStr.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryStr.charCodeAt(i);
+      }
+      const int16 = new Int16Array(bytes.buffer);
+      const float32 = new Float32Array(int16.length);
+      for (let i = 0; i < int16.length; i++) {
+        float32[i] = int16[i] / 32768.0;
+      }
+
+      const buffer = audioContext.createBuffer(1, float32.length, 24000);
+      buffer.getChannelData(0).set(float32);
+
+      const source = audioContext.createBufferSource();
+      source.buffer = buffer;
+      source.connect(audioContext.destination);
+
+      source.onended = () => {
+        const idx = activeAudioSources.indexOf(source);
+        if (idx !== -1) activeAudioSources.splice(idx, 1);
+      };
+      activeAudioSources.push(source);
+
+      const now = audioContext.currentTime;
+      if (nextPlayTime < now) nextPlayTime = now;
+      source.start(nextPlayTime);
+      nextPlayTime += buffer.duration;
+    }
+
+    function stopLiveVoice(customStatus = null) {
+      userWantsLiveVoice = false;
+      isLiveVoiceActive = false;
+      liveResumptionHandle = null;
+      if (liveReconnectTimer) {
+        clearTimeout(liveReconnectTimer);
+        liveReconnectTimer = null;
+      }
+
+      clearAudioPlaybackQueue();
+
+      const btn = document.getElementById('liveVoiceBtn');
+      const statusEl = document.getElementById('liveVoiceStatus');
+      if (btn) btn.textContent = 'Start live voice';
+      if (statusEl) {
+        statusEl.textContent = customStatus || 'Microphone off';
+        statusEl.style.color = customStatus ? 'var(--error)' : '';
+      }
+
+      if (micProcessor) {
+        try { micProcessor.disconnect(); } catch (e) {}
+        micProcessor = null;
+      }
+      if (micSourceNode) {
+        try { micSourceNode.disconnect(); } catch (e) {}
+        micSourceNode = null;
+      }
+      if (micSilenceGain) {
+        try { micSilenceGain.disconnect(); } catch (e) {}
+        micSilenceGain = null;
+      }
+      if (micStream) {
+        micStream.getTracks().forEach(t => t.stop());
+        micStream = null;
+      }
+      if (liveWs) {
+        try {
+          liveWs.onclose = null;
+          if (liveWs.readyState === WebSocket.OPEN) {
+            liveWs.send(JSON.stringify({ type: 'stop' }));
+          }
+          liveWs.close();
+        } catch (e) {}
+        liveWs = null;
+      }
+      activeInputTurnEl = null;
+      activeOutputTurnEl = null;
+    }
+
+    function showGlobalError(msg) {
+      const el = document.getElementById('globalError');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      const btn = document.getElementById('launchBtn');
+      btn.disabled = false;
+      btn.textContent = 'Create new briefing';
+    }
+
+    function handleServerEvent(ev) {
+      if (ev.type === 'global_error') {
+        showGlobalError(ev.error);
+        ['infographic', 'video', 'podcast', 'live_qa'].forEach(r => setStatus(r, 'Stopped'));
+        return;
+      }
+      if (ev.type === 'run_started') {
+        currentRunId = ev.run_id;
+        loadSessionsAndRestore(currentRunId);
+        return;
+      }
+      if (ev.type === 'run_finished' || ev.type === 'role_regenerated') {
+        const btn = document.getElementById('launchBtn');
+        btn.disabled = false;
+        btn.textContent = 'Create new briefing';
+        loadSessionsAndRestore(currentRunId);
+        return;
+      }
+
+      if (ev.type === 'artifact_progress') {
+        const r = ev.role;
+        if (!r || !vmState[r]) return;
+        vmState[r].files = vmState[r].files || [];
+        if (r === 'infographic') {
+          if (ev.file) {
+            const idx = vmState.infographic.files.findIndex(f => f.name === ev.file.name);
+            if (idx >= 0) vmState.infographic.files[idx] = ev.file;
+            else vmState.infographic.files.push(ev.file);
+          }
+          renderRoleArtifact('infographic', {
+            files: vmState.infographic.files,
+            takeaways: vmState.infographic.takeaways,
+          });
+        } else if (r === 'video') {
+          for (let k of ['file', 'storyboard_file', 'narration_file', 'bgm_file', 'ref_image_file', 'script_file', 'prompt_file']) {
+            if (ev[k]) {
+              const idx = vmState.video.files.findIndex(f => f.name === ev[k].name);
+              if (idx >= 0) vmState.video.files[idx] = ev[k];
+              else vmState.video.files.push(ev[k]);
+            }
+          }
+          if (ev.storyboard) vmState.video.storyboard = ev.storyboard;
+          if (ev.narration_script) vmState.video.narration_script = ev.narration_script;
+          if (ev.omni_prompt) vmState.video.omni_prompt = ev.omni_prompt;
+          if (ev.summaries) vmState.video.summaries = ev.summaries;
+          renderRoleArtifact('video', {
+            files: vmState.video.files,
+            storyboard: vmState.video.storyboard,
+            narration_script: vmState.video.narration_script,
+            omni_prompt: vmState.video.omni_prompt,
+            summaries: vmState.video.summaries,
+          });
+        } else if (r === 'podcast') {
+          vmState.podcast.podcast_styles = vmState.podcast.podcast_styles || {};
+          if (ev.style) {
+            vmState.podcast.podcast_styles[ev.style] = {
+              id: ev.style,
+              label: ev.label,
+              voices: ev.voices,
+              wav_file: ev.wav_file,
+              script_file: ev.script_file,
+              transcript: ev.transcript,
+            };
+          }
+          if (ev.wav_file) {
+            const idx = vmState.podcast.files.findIndex(f => f.name === ev.wav_file.name);
+            if (idx >= 0) vmState.podcast.files[idx] = ev.wav_file;
+            else vmState.podcast.files.push(ev.wav_file);
+          }
+          renderRoleArtifact('podcast', {
+            files: vmState.podcast.files,
+            podcast_styles: vmState.podcast.podcast_styles,
+          });
+        }
+        return;
+      }
+
+      const role = ev.role;
+      if (!role || !vmState[role]) return;
+
+      if (ev.type === 'vm_boot') {
+        setStatus(role, 'Starting virtual machine…');
+        appendLog(role, ev.message);
+      } else if (ev.type === 'interaction_created') {
+        if (ev.interaction_id) vmState[role].interaction_id = ev.interaction_id;
+        if (ev.environment_id) {
+          vmState[role].environment_id = ev.environment_id;
+          const envEl = document.getElementById(`env-${role}`);
+          if (envEl) envEl.textContent = `VM ${ev.environment_id.slice(0, 12)}`;
+        }
+        setStatus(role, 'Working…');
+      } else if (ev.type === 'step_start') {
+        const readableStep = {
+          thought: 'Planning next step…',
+          code_execution_call: 'Running Python in virtual machine…',
+          google_search_call: 'Searching the web…',
+          url_context_call: 'Reading web page…',
+          function_call: 'Running tool in virtual machine…',
+          image_generation: 'Generating 4 styled infographics…',
+          video_generation: 'Animating infographic reference with gemini-omni-1.1-flash (25s)…',
+          music_generation: 'Generating chill house elevator BGM with lyria-3.5…',
+          tts_synthesis: 'Synthesizing scene-aligned audio with gemini-3.8-flash-tts…',
+          model_output: 'Writing summary…',
+        };
+        setStatus(role, readableStep[ev.step_type] || 'Working…');
+        if (ev.detail) {
+          appendLog(role, `[${ev.step_type}] ${ev.detail}`);
+        }
+      } else if (ev.type === 'thought_delta') {
+        appendLog(role, ev.text);
+      } else if (ev.type === 'text_delta') {
+        appendLog(role, ev.text);
+      } else if (ev.type === 'downloading_files') {
+        if (ev.environment_id) {
+          vmState[role].environment_id = ev.environment_id;
+          const envEl = document.getElementById(`env-${role}`);
+          if (envEl) envEl.textContent = `VM ${ev.environment_id.slice(0, 12)}`;
+        }
+        setStatus(role, 'Downloading files from virtual machine…');
+        appendLog(role, ev.message);
+      } else if (ev.type === 'agent_completed') {
+        if (ev.interaction_id) vmState[role].interaction_id = ev.interaction_id;
+        if (ev.environment_id) {
+          vmState[role].environment_id = ev.environment_id;
+          const envEl = document.getElementById(`env-${role}`);
+          if (envEl) envEl.textContent = `VM ${ev.environment_id.slice(0, 12)}`;
+        }
+        if (ev.stories && ev.stories.length > 0) {
+          renderSessionStories(ev.stories, currentRunId);
+        }
+        setStatus(role, role === 'live_qa' ? 'Ready for questions' : 'Finished');
+        renderRoleArtifact(role, ev);
+        const fw = document.getElementById(`followup-wrap-${role}`);
+        if (fw) fw.classList.remove('hidden');
+      } else if (ev.type === 'agent_error') {
+        setStatus(role, 'Failed');
+        appendLog(role, `Error: ${ev.error}`);
+      }
+    }
+
+    function switchPodcastTab(styleId) {
+      window.currentPodcastTab = styleId;
+      renderRoleArtifact('podcast', {
+        files: (vmState.podcast && vmState.podcast.files) || [],
+        podcast_styles: (vmState.podcast && vmState.podcast.podcast_styles) || {},
+        transcript: (vmState.podcast && vmState.podcast.transcript) || '',
+      });
+    }
+
+    function renderRoleArtifact(role, ev) {
+      const container = document.getElementById(`output-${role}`);
+      const summaryEl = document.getElementById(`summary-${role}`);
+      const files = ev.files || [];
+
+      if (role === 'infographic') {
+        const takeawaysText = (ev.takeaways || ev.output_text || '').trim();
+        if (takeawaysText && summaryEl) {
+          summaryEl.innerHTML = `
+            <div class="takeaways-heading">Top 3 takeaways from the headlines</div>
+            <div class="summary-prose" style="margin-top:0.25rem;">${escapeHtml(takeawaysText)}</div>
+          `;
+          summaryEl.classList.remove('hidden');
+        }
+
+        const styles = [
+          { id: 'style1', filename: 'infographic_style1_minimal.png', label: 'Style 1: Minimal / Monochrome / Line Art' },
+          { id: 'style2', filename: 'infographic_style2_space_retro.png', label: 'Style 2: Space / Retro' },
+          { id: 'style3', filename: 'infographic_style3_pop_art.png', label: 'Style 3: Pop Art / Risograph / Neon' },
+          { id: 'style4', filename: 'infographic_style4_watercolor.png', label: 'Style 4: Sketch / Watercolor / Travel' },
+        ];
+
+        const cardsHtml = styles.map(st => {
+          const img = files.find(f => f.name === st.filename || f.style_id === st.id);
+          if (img && img.url) {
+            const kb = Math.max(1, Math.round((img.size_bytes || 0) / 1024));
+            return `
+              <div class="infographic-card">
+                <div>
+                  <div class="infographic-card-title">${escapeHtml(st.label)}</div>
+                  <a href="${img.url}" target="_blank" rel="noopener" title="Open full size: ${escapeHtml(st.label)}">
+                    <img src="${img.url}" alt="${escapeHtml(st.label)}" loading="lazy" />
+                  </a>
+                </div>
+                <div class="infographic-card-links">
+                  <a href="${img.url}" target="_blank" rel="noopener">Open full size</a>
+                  <a href="${img.url}" download="${escapeHtml(st.filename)}">Download (${kb} KB)</a>
+                </div>
+              </div>
+            `;
+          } else {
+            return `
+              <div class="infographic-card pending">
+                <div class="slot-spinner"></div>
+                <div class="infographic-card-title">${escapeHtml(st.label)}</div>
+                <span class="hint" style="margin:0;">Generating in separate file…</span>
+              </div>
+            `;
+          }
+        }).join('');
+
+        if (container) {
+          container.classList.remove('hidden');
+          container.innerHTML = `<div class="infographic-grid">${cardsHtml}</div>`;
+        }
+      } else if (role === 'video') {
+        const vidFile = files.find(f => f.name.endsWith('.mp4'));
+        const narrFile = files.find(f => f.name === 'narration.wav');
+        const bgmFile = files.find(f => f.name === 'chill_house_bgm.mp3');
+        const refImgFile = files.find(f => f.name === 'reference_infographic.png');
+        const sbText = ev.storyboard || ev.output_text || (vmState.video && vmState.video.storyboard) || '';
+        let narrScript = ev.narration_script || (vmState.video && vmState.video.narration_script) || '';
+        let omniPrompt = ev.omni_prompt || (vmState.video && vmState.video.omni_prompt) || '';
+
+        if (!narrScript && sbText) {
+          const nm = sbText.match(/## 🎙️[^\n]*\n((?:>.*\n?)+)/);
+          if (nm) narrScript = nm[1].replace(/^>\s*/gm, '').trim();
+        }
+        if (!omniPrompt && sbText) {
+          const pm = sbText.match(/## 🎬[^\n]*\n```[a-z]*\n([\s\S]*?)\n```/);
+          if (pm) omniPrompt = pm[1].trim();
+        }
+
+        if (container) {
+          container.classList.remove('hidden');
+
+          const metaBadgeHtml = `
+            <div class="podcast-meta-badge" style="margin-bottom:0.55rem; flex-wrap:wrap;">
+              <span class="voice-tag">🎬 gemini-omni-1.1-flash (25s)</span>
+              <span class="voice-tag">🖼️ Infographic &lt;IMAGE_REF_0&gt;</span>
+              <span class="voice-tag">🎙️ gemini-3.8-flash-tts (Puck)</span>
+              <span class="voice-tag">🎵 lyria-3.5 (Chill House BGM)</span>
+            </div>
+          `;
+
+          let narrHtml = '';
+          if (narrScript || narrFile || bgmFile) {
+            const scriptLinesHtml = (narrScript || '')
+              .split('\n')
+              .map(l => l.trim())
+              .filter(Boolean)
+              .map(l => `<div style="margin-bottom:0.3rem;">${escapeHtml(l)}</div>`)
+              .join('');
+
+            narrHtml = `
+              <details class="storyboard-block" open style="margin-top:0.75rem;">
+                <summary style="font-weight:700; font-size:0.84rem; cursor:pointer; color:var(--ink); text-transform:uppercase; letter-spacing:0.5px;">
+                  🎙️ Scene-Aligned Narration (gemini-3.8-flash-tts) & Chill House Music (lyria-3.5)
+                </summary>
+                ${scriptLinesHtml ? `
+                  <div style="font-family:'Newsreader',Georgia,serif; font-size:1.04rem; line-height:1.5; color:var(--ink); margin-top:0.55rem; padding-left:0.6rem; border-left:3px solid var(--ink);">
+                    ${scriptLinesHtml}
+                  </div>
+                ` : ''}
+                ${narrFile ? `
+                  <div style="margin-top:0.65rem; display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+                    <span style="font-size:0.78rem; font-weight:600; color:var(--muted); min-width:135px;">🎙️ Aligned TTS Voice:</span>
+                    <audio src="${narrFile.url}" controls style="flex:1; height:32px; min-width:160px;"></audio>
+                    <a href="${narrFile.url}" download="narration.wav" style="font-size:0.8rem; font-weight:600; text-decoration:underline; color:var(--link);">WAV (${Math.round((narrFile.size_bytes || 0) / 1024)} KB)</a>
+                  </div>
+                ` : ''}
+                ${bgmFile ? `
+                  <div style="margin-top:0.5rem; display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+                    <span style="font-size:0.78rem; font-weight:600; color:var(--muted); min-width:135px;">🎵 Lyria 3.5 Chill House:</span>
+                    <audio src="${bgmFile.url}" controls style="flex:1; height:32px; min-width:160px;"></audio>
+                    <a href="${bgmFile.url}" download="chill_house_bgm.mp3" style="font-size:0.8rem; font-weight:600; text-decoration:underline; color:var(--link);">MP3 (${Math.round((bgmFile.size_bytes || 0) / 1024)} KB)</a>
+                  </div>
+                ` : ''}
+              </details>
+            `;
+          }
+
+          let promptHtml = '';
+          if (omniPrompt) {
+            promptHtml = `
+              <details class="storyboard-block" style="margin-top:0.6rem;">
+                <summary style="font-weight:700; font-size:0.84rem; cursor:pointer; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px;">
+                  🎬 Gemini Omni 1.1 Flash Prompt (&lt;IMAGE_REF_0&gt; Infographic Reference)
+                </summary>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; line-height:1.45; color:#1E293B; background:#F1F5F9; border:1px solid var(--rule); padding:0.65rem; margin-top:0.5rem; white-space:pre-wrap; border-radius:3px;">
+                  ${escapeHtml(omniPrompt)}
+                </div>
+              </details>
+            `;
+          }
+
+          let sbHtml = '';
+          if (sbText) {
+            const rawLines = sbText.split('\n');
+            const items = [];
+            let current = null;
+            for (let line of rawLines) {
+              const m = line.match(/^(\d+)\.\s+\*\*(.*?)\*\*(.*)/);
+              if (m) {
+                if (current) items.push(current);
+                current = { num: m[1], title: m[2], meta: m[3].replace(/[()]/g, '').trim(), summary: '' };
+              } else if (line.includes('1-Liner Takeaway:') || line.includes('Summary:')) {
+                const parts = line.split(/1-Liner Takeaway:|Summary:/);
+                if (current && parts[1]) current.summary = parts[1].replace(/[*_]/g, '').trim();
+              }
+            }
+            if (current) items.push(current);
+
+            if (items.length > 0) {
+              sbHtml = `
+                <div class="storyboard-block" style="margin-top:0.6rem;">
+                  <div class="storyboard-heading">Top Stories — Scene Timeline & 1-Liner Summaries</div>
+                  ${items.map(it => `
+                    <div class="storyboard-item">
+                      <div class="storyboard-title">${it.num}. ${escapeHtml(it.title)} <span style="font-weight:normal;color:var(--muted);font-size:0.8rem;">(${escapeHtml(it.meta)})</span></div>
+                      ${it.summary ? `<div class="storyboard-summary">${escapeHtml(it.summary)}</div>` : ''}
+                    </div>
+                  `).join('')}
+                </div>
+              `;
+            } else if (!narrScript && !omniPrompt) {
+              sbHtml = `<div class="storyboard-block"><div class="summary-prose">${escapeHtml(sbText)}</div></div>`;
+            }
+          }
+
+          container.innerHTML = `
+            ${metaBadgeHtml}
+            ${vidFile ? `
+              <video src="${vidFile.url}" controls playsinline></video>
+              <div class="view-links" style="margin-top:0.45rem; display:flex; gap:0.85rem; flex-wrap:wrap;">
+                <a href="${vidFile.url}" download="news_video.mp4">Download 25s MP4 (${(Math.max(0.1, (vidFile.size_bytes || 0) / (1024 * 1024))).toFixed(1)} MB)</a>
+                ${refImgFile ? `<a href="${refImgFile.url}" target="_blank" rel="noopener">View Infographic Reference (&lt;IMAGE_REF_0&gt;)</a>` : ''}
+                ${narrFile ? `<a href="${narrFile.url}" download="narration.wav">Voiceover WAV</a>` : ''}
+                ${bgmFile ? `<a href="${bgmFile.url}" download="chill_house_bgm.mp3">Lyria 3.5 BGM MP3</a>` : ''}
+              </div>
+            ` : '<div class="hint" style="margin: 0.5rem 0;">Animating infographic reference (&lt;IMAGE_REF_0&gt;) with gemini-omni-1.1-flash (25s), gemini-3.8-flash-tts narration & lyria-3.5 chill house music…</div>'}
+            ${narrHtml}
+            ${promptHtml}
+            ${sbHtml}
+          `;
+        }
+      } else if (role === 'podcast') {
+        const podStyles = ev.podcast_styles || (vmState.podcast && vmState.podcast.podcast_styles) || {};
+        const styleDefs = [
+          { id: 'energetic', label: '⚡ Energetic morning show', alex: 'Kore', sam: 'Puck' },
+          { id: 'bedtime', label: '🌙 Bedtime story', alex: 'Sulafat', sam: 'Enceladus' },
+          { id: 'skeptical', label: '🧐 Skeptical engineers', alex: 'Fenrir', sam: 'Zephyr' },
+        ];
+
+        window.currentPodcastTab = window.currentPodcastTab || 'energetic';
+        const activeTab = window.currentPodcastTab;
+
+        if (container) {
+          container.classList.remove('hidden');
+
+          const tabsHtml = styleDefs.map(def => {
+            const hasData = Boolean(podStyles[def.id] || files.find(f => f.name === `podcast_${def.id}.wav`));
+            const isActive = def.id === activeTab;
+            return `
+              <button type="button" class="podcast-tab-btn ${isActive ? 'active' : ''} ${hasData ? 'ready' : ''}" onclick="switchPodcastTab('${def.id}')">
+                ${def.label}
+              </button>
+            `;
+          }).join('');
+
+          const activeDef = styleDefs.find(d => d.id === activeTab) || styleDefs[0];
+          const activeData = podStyles[activeDef.id] || {};
+          let wavFile = activeData.wav_file || files.find(f => f.name === `podcast_${activeDef.id}.wav`);
+          if (!wavFile && activeDef.id === 'energetic') {
+            wavFile = files.find(f => f.name === 'podcast.wav');
+          }
+          const scriptText = activeData.transcript || ev.transcript || ev.output_text || '';
+
+          const paragraphs = scriptText
+            .split(/\n+/)
+            .map(line => line.trim())
+            .filter(Boolean)
+            .map(line => `<p>${escapeHtml(line)}</p>`)
+            .join('');
+
+          container.innerHTML = `
+            <div class="podcast-tabs">${tabsHtml}</div>
+            <div class="podcast-style-pane">
+              <div class="podcast-meta-badge">
+                <span>Multi-speaker gemini-3.8-flash-tts</span>
+                <span class="voice-tag">Alex (${activeDef.alex}) & Sam (${activeDef.sam})</span>
+              </div>
+              ${wavFile ? `
+                <audio src="${wavFile.url}" controls></audio>
+                <div class="view-links">
+                  <a href="${wavFile.url}" download="${wavFile.name || 'podcast.wav'}">Download WAV (${Math.round((wavFile.size_bytes || 0) / 1024)} KB)</a>
+                </div>
+              ` : '<div class="hint" style="margin: 0.5rem 0;">Synthesizing audio in separate file…</div>'}
+              ${paragraphs ? `
+                <details style="margin-top:0.6rem;font-size:0.86rem;">
+                  <summary style="cursor:pointer;color:var(--muted);text-decoration:underline;">View script transcript</summary>
+                  <div class="transcript-body" style="margin-top:0.4rem;">${paragraphs}</div>
+                </details>
+              ` : ''}
+            </div>
+          `;
+        }
+      } else if (role === 'live_qa') {
+        if (ev.output_text && summaryEl) {
+          summaryEl.textContent = ev.output_text;
+          summaryEl.classList.remove('hidden');
+        }
+      }
+    }
+
+    initPage();
+  </script>
+</body>
+</html>
