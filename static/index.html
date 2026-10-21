@@ -674,6 +674,49 @@
       gap: 0.65rem;
     }
 
+    .qa-chips-wrap {
+      margin-top: 0.75rem;
+      margin-bottom: 0.35rem;
+      padding: 0.6rem 0.7rem;
+      background-color: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+    }
+
+    .qa-chips-label {
+      display: block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .qa-chips-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .qa-chip {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      background-color: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--rule-strong);
+      border-radius: 999px;
+      box-shadow: none;
+      cursor: pointer;
+      transition: background-color 0.12s ease, color 0.12s ease;
+    }
+
+    .qa-chip:hover:not(:disabled) {
+      background-color: var(--ink);
+      color: var(--paper);
+    }
+
     .hidden {
       display: none !important;
     }
@@ -892,6 +935,11 @@
               Start live voice
             </button>
             <span id="liveVoiceStatus" class="status-line">Microphone off</span>
+          </div>
+
+          <div id="qaChipsContainer" class="qa-chips-wrap hidden">
+            <span id="qaChipsLabel" class="qa-chips-label">Suggested questions (click to play recorded voice or ask live):</span>
+            <div id="qaChipsList" class="qa-chips-list"></div>
           </div>
 
           <div id="qaThread" class="qa-thread">
@@ -1186,6 +1234,81 @@
           if (item.question) appendQaTurn('You (voice)', item.question);
           if (item.answer) appendQaTurn('Answer (live)', item.answer, item.audio_url, false);
         });
+      }
+
+      renderQaPresets(sess.qa_presets || [], sess.stories || []);
+    }
+
+    let currentQaPresets = [];
+
+    function renderQaPresets(presets, stories) {
+      const wrap = document.getElementById('qaChipsContainer');
+      const list = document.getElementById('qaChipsList');
+      if (!wrap || !list) return;
+
+      let items = Array.isArray(presets) && presets.length > 0 ? presets.slice() : [];
+      if (items.length === 0 && Array.isArray(stories) && stories.length > 0) {
+        items = stories.slice(0, 3).map((s, idx) => ({
+          chip: `Story #${idx + 1}: ${(s.title || '').slice(0, 28)}…`,
+          question: `What are the main takeaways and reader comments for "${s.title}"?`,
+          answer: '',
+          audio_url: null,
+        }));
+      }
+      currentQaPresets = items;
+
+      if (items.length === 0) {
+        wrap.classList.add('hidden');
+        list.innerHTML = '';
+        return;
+      }
+
+      wrap.classList.remove('hidden');
+      list.innerHTML = items.map((item, idx) => {
+        const badge = item.audio_url ? '🔊 ' : '💬 ';
+        const label = item.chip || item.question || `Question ${idx + 1}`;
+        return `<button type="button" class="qa-chip" onclick="handleQaChipClick(${idx})" title="${escapeHtml(item.question || '')}">${badge}${escapeHtml(label)}</button>`;
+      }).join('');
+    }
+
+    async function handleQaChipClick(idx) {
+      const item = currentQaPresets[idx];
+      if (!item) return;
+
+      // 1. If Gemini Live API WebSocket is actively connected, send the question live!
+      if (isLiveVoiceActive && liveWs && liveWs.readyState === WebSocket.OPEN) {
+        appendQaTurn('You (asked live)', item.question);
+        activeOutputTurnEl = null;
+        liveWs.send(JSON.stringify({
+          type: 'text_question',
+          text: item.question,
+        }));
+        return;
+      }
+
+      // 2. If a pre-recorded voice answer exists for this session, play it immediately (zero API key required!)
+      if (item.answer || item.audio_url) {
+        appendQaTurn('You (suggested question)', item.question);
+        appendQaTurn('Answer (recorded live turn)', item.answer || '(Spoken answer)', item.audio_url, true);
+        return;
+      }
+
+      // 3. Otherwise, if user has an API key, start Live Voice and send the question once connected
+      const apiKey = getApiKeyValue();
+      if (apiKey) {
+        await startLiveVoice();
+        setTimeout(() => {
+          if (liveWs && liveWs.readyState === WebSocket.OPEN) {
+            appendQaTurn('You (asked live)', item.question);
+            liveWs.send(JSON.stringify({
+              type: 'text_question',
+              text: item.question,
+            }));
+          }
+        }, 1200);
+      } else {
+        const keyInput = document.getElementById('apiKeyInput');
+        if (keyInput) keyInput.focus();
       }
     }
 

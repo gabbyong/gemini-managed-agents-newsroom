@@ -341,17 +341,49 @@
   ],
   "qa_history": [
     {
+      "chip": "Gemini 4 Argon benchmarks",
       "question": "What are Hacker News readers saying about Gemini 4 Argon in the comments?",
-      "answer": "Readers are highlighting a clear step change in Gemini 4 Argon, especially for structured reasoning, coding benchmarks across competitive environments, and natural prose composition.",
+      "answer": "Readers are highlighting a clear step change in Gemini 4 Argon, especially for structured reasoning, coding benchmarks across 100 competitive environments, and natural prose composition.",
       "audio_url": "/outputs/run_1791964364/live_qa/qa_turn_1.wav",
       "thinking_level": "low"
     },
     {
-      "question": "Why are Android developers disassembling binaries in AOSP, and what happened with Ledger?",
-      "answer": "Public AOSP source drops have been delayed so long that engineers are using disassemblers on compiled libraries just to file bug reports. Meanwhile, Ledger confirmed a supply-chain attack where retail hardware wallets were implanted with a tiny microchip and eSIM that tapped the screen output.",
+      "chip": "AOSP source code delays",
+      "question": "Why are Android developers disassembling binaries in AOSP?",
+      "answer": "Public Android Open Source Project source drops have been delayed so long that engineers are running disassemblers on compiled system libraries just to isolate and file reproducible bug reports.",
       "audio_url": "/outputs/run_1791964364/live_qa/qa_turn_2.wav",
-      "thinking_level": "high"
+      "thinking_level": "low"
     }
   ],
-  "last_qa_interaction_id": null
+  "last_qa_interaction_id": null,
+  "qa_presets": [
+    {
+      "chip": "Gemini 4 Argon benchmarks",
+      "question": "What are Hacker News readers saying about Gemini 4 Argon in the comments?",
+      "answer": "Readers are highlighting a clear step change in Gemini 4 Argon, especially for structured reasoning, coding benchmarks across 100 competitive environments, and natural prose composition.",
+      "audio_url": "/outputs/run_1791964364/live_qa/qa_turn_1.wav",
+      "thinking_level": "low"
+    },
+    {
+      "chip": "AOSP source code delays",
+      "question": "Why are Android developers disassembling binaries in AOSP?",
+      "answer": "Public Android Open Source Project source drops have been delayed so long that engineers are running disassemblers on compiled system libraries just to isolate and file reproducible bug reports.",
+      "audio_url": "/outputs/run_1791964364/live_qa/qa_turn_2.wav",
+      "thinking_level": "low"
+    },
+    {
+      "chip": "Ledger spy chip implant",
+      "question": "How did the Ledger hardware wallet spy chip attack work?",
+      "answer": "Attackers implanted a tiny microchip and eSIM inside compromised retail Ledger wallets that tapped the display signal line and used optical character recognition on the screen output, bypassing the secure element.",
+      "audio_url": "/outputs/run_1791964364/live_qa/qa_turn_3.wav",
+      "thinking_level": "high"
+    },
+    {
+      "chip": "Sound physics & 3D web craft",
+      "question": "What makes Bartosz Ciechanowski Sound article and Felix Rieseberg homepage stand out?",
+      "answer": "Bartosz Ciechanowski uses interactive 3D wave simulations to make acoustic physics intuitive, while Felix Rieseberg built a nostalgic interactive 3D desktop in the browser that sparked discussion on modern WebGL craft.",
+      "audio_url": "/outputs/run_1791964364/live_qa/qa_turn_4.wav",
+      "thinking_level": "low"
+    }
+  ]
 }
