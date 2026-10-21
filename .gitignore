@@ -21,6 +21,7 @@ __pycache__/
 **/.hud_overlays/
 **/.tmp_*
 
-# Ignore scratch output runs except the golden demo session (run_1790674055)
+# Ignore scratch output runs except the preloaded demo sessions (run_1791964364 and run_1790674055)
 static/outputs/*
+!static/outputs/run_1791964364/
 !static/outputs/run_1790674055/

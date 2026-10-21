@@ -1,0 +1,117 @@
+[
+  {
+    "id": 50083130,
+    "title": "AOSP Source Releases Are So Late Developers Disassemble Libraries to Report Bugs",
+    "url": "https://github.com/android/ndk/issues/2260",
+    "hn_url": "https://news.ycombinator.com/item?id=50083130",
+    "score": 146,
+    "comments": 45,
+    "by": "tharen",
+    "top_comments": [
+      {
+        "by": "kodebach",
+        "text": "I can't prove it, but I still think this is (partly) due to a recent EU regulation majorly backfiring. I can't remember which one it was, but one of the recent regulations mandates that devices get updates for a certain period. Within that period a manufacturer must provide each update for all their devices in a short timeframe. The intention was to prevent "
+      },
+      {
+        "by": "userbinator",
+        "text": "One character: a plain compare loop. Correct. Not surprisingly, I get slight hints of Claudism in the text. AI \"opening\" the source of software is one of the best things I've seen going for it so far."
+      },
+      {
+        "by": "reddalo",
+        "text": "The new Google motto seems to be \"be as evil as you can\". We need an Android alternative, something that respects users' freedom."
+      }
+    ]
+  },
+  {
+    "id": 50073879,
+    "title": "Gemini 4 Argon",
+    "url": "https://deepmind.google/models/gemini/",
+    "hn_url": "https://news.ycombinator.com/item?id=50073879",
+    "score": 1238,
+    "comments": 865,
+    "by": "737max",
+    "top_comments": [
+      {
+        "by": "gertlabs",
+        "text": "We evaluated Gemini 4 Argon in 100 unsaturated, competitive and cooperative coding environments. It's roughly in between Fable 5 and Fable 5.1 in our testing, so it's maybe 2 months behind the frontier. Google's major releases have usually done pretty well on our benchmarks because they're good at hard problems and open-ended decision making (with a well spe"
+      },
+      {
+        "by": "svara",
+        "text": "I haven't tried it for coding yet, but I ran a couple of my recent curiosity driven queries from Claude (mostly used Fable and Opus 5.5) through it. This is a clear step change, I'm genuinely amazed. Its answers are to-the-point, logically structured, clearly written. Like a really well made mini essay on your question. It also really likes to build little s"
+      },
+      {
+        "by": "postalcoder",
+        "text": "I'm using this model via API. I am most excited about its ability to write the english language (or any language). My least favorite trend on twitter has been people posting 2D illustrations/3D renders as a proxy for model capability. Well-written prose is far less likely to go viral but far outstrips the importance rendering a fantasy world in one shot. I'v"
+      }
+    ]
+  },
+  {
+    "id": 50045147,
+    "title": "Sound \u2013 Bartosz Ciechanowski (2022)",
+    "url": "https://ciechanow.ski/sound/",
+    "hn_url": "https://news.ycombinator.com/item?id=50045147",
+    "score": 94,
+    "comments": 13,
+    "by": "dverlaeckt80",
+    "top_comments": [
+      {
+        "by": "__natty__",
+        "text": "Reading this guy blog posts makes me feel like when I was reading as a kid good pop-science article in the magazine or encyclopedia. Somehow it's easy to follow, nicely visualise and I can trust his work was verified because he was writing like this far before AI."
+      },
+      {
+        "by": "guptarohit",
+        "text": "His all posts are such a gems. Recently I vibed this with Opus5: https://music.rohitgupta.xyz/ - Music,from zero; a interactive guide."
+      },
+      {
+        "by": "vincnetas",
+        "text": "So we have Turing test. We now need Bartosz test for AI for general intelligence. give it concept, get it explained like this :)"
+      }
+    ]
+  },
+  {
+    "id": 50082470,
+    "title": "Felix Rieseberg Homepage",
+    "url": "https://felixrieseberg.com/",
+    "hn_url": "https://news.ycombinator.com/item?id=50082470",
+    "score": 160,
+    "comments": 54,
+    "by": "rglover",
+    "top_comments": [
+      {
+        "by": "KubaFYI",
+        "text": "I wonder how many millions of tokens it took."
+      },
+      {
+        "by": "illwrks",
+        "text": "I've seen a several AI-coded WebGL examples... I wonder if AI will mean the return of the Flash-style interactive websites."
+      },
+      {
+        "by": "kaeruct",
+        "text": "Feels so strange to recognize what's out the window. I hope this cannot be used to find where they live!"
+      }
+    ]
+  },
+  {
+    "id": 50054092,
+    "title": "Ledger confirms spy chip implant behind wallet crypto thefts",
+    "url": "https://www.bleepingcomputer.com/news/security/ledger-confirms-hardware-wallet-spy-implant-behind-crypto-thefts/",
+    "hn_url": "https://news.ycombinator.com/item?id=50054092",
+    "score": 642,
+    "comments": 424,
+    "by": "thm",
+    "top_comments": [
+      {
+        "by": "TacticalCoder",
+        "text": "No matter whether you like or hate or don't care about cryptocurrencies, this is incredible stuff... Now basically: every single attack that's been described as \"theoretical\" or \"far-fetched\" or \"only existing in the mind of a paranoid person\" did actually happen. We're talking here about a tiny eSIM implant and a little CPU doing OCR on the fonts appearing "
+      },
+      {
+        "by": "cowlevel",
+        "text": "Not mentioned in article: MediaMarkt, the German equivalent of Best Buy, was selling these compromised devices on store shelves in every city in Germany."
+      },
+      {
+        "by": "megous",
+        "text": "The technique is so coool. I mean taping the screen output on the way to the display to get around having to hack the secure element. :)"
+      }
+    ]
+  }
+]

@@ -358,7 +358,13 @@ async def list_sessions() -> JSONResponse:
         for d in OUTPUTS_DIR.iterdir():
             if d.is_dir() and d.name.startswith("run_"):
                 run_dirs.append(d)
-    run_dirs.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+    run_dirs.sort(
+        key=lambda p: (
+            int(p.name[4:]) if p.name[4:].isdigit() else 0,
+            p.stat().st_mtime,
+        ),
+        reverse=True,
+    )
 
     sessions_summary: List[Dict[str, Any]] = []
     best_session: Optional[Dict[str, Any]] = None
@@ -763,6 +769,10 @@ async def live_voice_ws(ws: WebSocket) -> None:
 
             async def receive_from_gemini() -> None:
                 nonlocal resumption_handle
+                import wave
+                turn_in_parts: List[str] = []
+                turn_out_parts: List[str] = []
+                turn_pcm_bytes = bytearray()
                 try:
                     # IMPORTANT: `session.receive()` in `google-genai` yields messages for ONE model turn
                     # and then breaks when `turn_complete` is True. Wrapping it in `while True:` keeps
@@ -787,6 +797,8 @@ async def live_voice_ws(ws: WebSocket) -> None:
                                 continue
 
                             if getattr(content, "interrupted", False):
+                                turn_out_parts.clear()
+                                turn_pcm_bytes.clear()
                                 await ws.send_json({"type": "live_interrupted"})
 
                             if getattr(content, "model_turn", None):
@@ -798,6 +810,12 @@ async def live_voice_ws(ws: WebSocket) -> None:
                                     inline = getattr(part, "inline_data", None)
                                     if inline and getattr(inline, "data", None):
                                         raw_aud = inline.data
+                                        pcm_chunk = (
+                                            raw_aud
+                                            if isinstance(raw_aud, bytes)
+                                            else base64.b64decode(raw_aud)
+                                        )
+                                        turn_pcm_bytes.extend(pcm_chunk)
                                         b64_aud = (
                                             base64.b64encode(raw_aud).decode("ascii")
                                             if isinstance(raw_aud, bytes)
@@ -808,15 +826,55 @@ async def live_voice_ws(ws: WebSocket) -> None:
                             if getattr(content, "input_transcription", None):
                                 t_in = getattr(content.input_transcription, "text", None)
                                 if t_in:
+                                    turn_in_parts.append(t_in)
                                     await ws.send_json({"type": "live_input_transcript", "text": t_in})
 
                             if getattr(content, "output_transcription", None):
                                 t_out = getattr(content.output_transcription, "text", None)
                                 if t_out:
+                                    turn_out_parts.append(t_out)
                                     await ws.send_json({"type": "live_output_transcript", "text": t_out})
 
                             if getattr(content, "turn_complete", False):
-                                await ws.send_json({"type": "live_turn_complete"})
+                                q_text = "".join(turn_in_parts).strip()
+                                a_text = "".join(turn_out_parts).strip()
+                                saved_audio_url = None
+                                target_run = run_id or "run_1791964364"
+                                if len(turn_pcm_bytes) > 1000:
+                                    try:
+                                        qa_dir = OUTPUTS_DIR / target_run / "live_qa"
+                                        qa_dir.mkdir(parents=True, exist_ok=True)
+                                        ts_ms = int(time.time() * 1000)
+                                        wav_name = f"qa_turn_{ts_ms}.wav"
+                                        wav_path = qa_dir / wav_name
+                                        with wave.open(str(wav_path), "wb") as wf:
+                                            wf.setnchannels(1)
+                                            wf.setsampwidth(2)
+                                            wf.setframerate(24000)
+                                            wf.writeframes(bytes(turn_pcm_bytes))
+                                        saved_audio_url = f"/outputs/{target_run}/live_qa/{wav_name}"
+                                    except Exception:
+                                        pass
+                                if q_text or a_text:
+                                    update_session_from_event(
+                                        target_run,
+                                        {
+                                            "type": "qa_answer",
+                                            "question": q_text or "(Spoken question)",
+                                            "answer": a_text or "(Spoken response)",
+                                            "audio_url": saved_audio_url,
+                                            "thinking_level": thinking_level,
+                                        },
+                                    )
+                                turn_in_parts.clear()
+                                turn_out_parts.clear()
+                                turn_pcm_bytes.clear()
+                                await ws.send_json(
+                                    {
+                                        "type": "live_turn_complete",
+                                        "audio_url": saved_audio_url,
+                                    }
+                                )
 
                         if not got_any:
                             # Underlying WebSocket closed cleanly or rotated
